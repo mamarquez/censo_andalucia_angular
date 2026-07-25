@@ -1,0 +1,341 @@
+.bold{
+    font-weight:bold !important;
+}
+
+.cargando {
+    position: absolute;
+    background-color: #FFF;
+    height: 550px;
+    width: 100%;
+    z-index: 9999;
+}
+
+    .cargando img {
+        position: absolute;
+        left: calc(50% - 50px);
+        top: calc(50% - 50px);
+        height: 100px;
+        width: 100px;
+    }
+
+.codigo-ieda {
+	font-size: 60%;
+	color: #999;
+	font-family: 'Open Sans', sans-serif !important;
+	font-style: italic;
+	display: inline-block;
+}
+
+.separado {
+	margin-left: 24px;
+}
+
+.property-info .codigo-ieda{
+    font-size:100% !important;
+}
+
+.list-group-item > .badge {
+	max-width: 230px;
+}
+
+.list-group-item > .badge a{
+	color: #FFFFFF;
+	text-decoration:none;
+}
+
+.list-group-item > .badge a:hover{
+	color: #FFFFFF;
+	text-decoration:none;
+}
+
+#map-ruta img, #map-ruta object, #map-ruta embed {
+    max-width: none !important;
+}
+
+#map-ruta .gm-style label {
+    width: auto !important; display:inline !important;
+  }
+
+.tipos{
+	margin-top: 10px;
+}
+
+.tipo{
+	display:inline-block;
+	background:#666;
+	color:#fff;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	height:30px;
+	margin-bottom: 5px;
+}
+.tipo strong{
+	background:rgba(0,0,0,.1);
+	padding:0 7px;
+	-webkit-border-radius:3px 0 0 3px;
+	-moz-border-radius:3px 0 0 3px;
+	border-radius:3px 0 0 3px;
+	line-height:30px;
+	height:30px;
+	display: inline-block;
+	font-weight:400;
+}
+.tipo span{
+	padding:0 7px;
+	line-height:30px;
+	height:30px;
+	font-weight:300;
+}
+
+.tipo.mini{
+	display:inline-block;
+	background:#666;
+	color:#fff;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
+	height:24px;
+	margin-bottom: 3px;
+}
+.tipo.mini span{
+	padding:0 5px;
+	line-height:24px;
+	height:24px;
+	font-weight:300;
+}
+
+
+/*COLORES*/
+
+/*PPP. PISTAS Y PABELLONES POLIDEPORTIVOS
+FPF. FRONTONES Y PABELLONES CON FRONTÓN
+TEN. PISTAS DE TENIS
+PAD. PISTAS DE PADEL
+SQU. PISTAS DE SQUASH
+CAM. CAMPOS
+FUT. CAMPOS DE FUTBOL*/
+
+.tipo.PPP{
+	background:#20965a;
+	color:#fff;
+}
+
+.tipo.FPF{
+	background:#008642;
+	color:#fff;
+}
+
+.tipo.TEN{
+	background:#00be5d;
+	color:#fff;
+}
+
+.tipo.PAD{
+	background:#68b626;
+	color:#fff;
+}
+
+.tipo.SQU{
+	background:#4aa300;
+	color:#fff;
+}
+
+.tipo.CAM{
+	background:#69e700;
+	color:#fff;
+}
+
+.tipo.FUT{
+	background:#68a800;
+	color:#fff;
+}
+
+/*ATL. PISTAS DE ATLETISMO
+GOL. CAMPOS DE GOLF
+CIR. CIRCUITOS DE VELOCIDAD
+VEL. VELÓDROMOS
+MOT. CIRCUITOS DE MOTOCROSS
+KAR. CIRCUITOS DE KARTING
+BIC. CARRILES DE BICICLETA
+HIP. PISTAS DE HÍPICA
+ATE. ÁREAS DE ACTIVIDAD TERRESTRE*/
+
+.tipo.ATL{
+	background:#b42e00;
+	color:#fff;
+}
+
+.tipo.GOL{
+	background:#ff4100;
+	color:#fff;
+}
+
+.tipo.CIR{
+	background:#c9532a;
+	color:#fff;
+}
+
+.tipo.VEL{
+	background:#e80046;
+	color:#fff;
+}
+
+.tipo.MOT{
+	background:#f36e96;
+	color:#fff;
+}
+
+.tipo.KAR{
+	background:#f33d74;
+	color:#fff;
+}
+
+.tipo.BIC{
+	background:#d9006b;
+	color:#fff;
+}
+
+.tipo.HIP{
+	background:#ac2467;
+	color:#fff;
+}
+
+.tipo.ATE{
+	background:#99004b;
+	color:#fff;
+}
+
+/*PIS. PISCINAS
+PUE. PUERTOS Y DÁRSENAS DEPORTIVAS
+AAC. ÁREAS DE ACTIVIDAD ACUÁTICA
+AAE. ÁREAS DE ACTIVIDAD AÉREA
+AER. AERÓDROMOS
+HLO. PISTAS DE HIELO
+SKI. PISTAS DE ESQUÍ*/
+
+.tipo.PIS{
+	background:#0c63b2;
+	color:#fff;
+}
+
+.tipo.PUE{
+	background:#255bbc;
+	color:#fff;
+}
+
+.tipo.AAC{
+	background:#05447d;
+	color:#fff;
+}
+
+.tipo.AAE{
+	background:#560fb9;
+	color:#fff;
+}
+
+.tipo.AER{
+	background:#3a0682;
+	color:#fff;
+}
+
+.tipo.HLO{
+	background:#8444dc;
+	color:#fff;
+}
+
+.tipo.SKI{
+	background:#9b6ddc;
+	color:#fff;
+}
+
+
+/*PET. PISTAS DE PETANCA
+TIR. CAMPOS DE TIRO
+JTP. JUEGOS TRADICIONALES Y POPULARES
+REF. REFUGIOS DE MONTAÑA
+ROC. ROCÓDROMOS
+SAL. SALAS*/
+
+.tipo.PET{
+	background:#ffe700;
+	color:#fff;
+}
+
+.tipo.TIR{
+	background:#b4a200;
+	color:#fff;
+}
+
+.tipo.JTP{
+	background:#c9ba2a;
+	color:#fff;
+}
+
+.tipo.REF{
+	background:#b48700;
+	color:#fff;
+}
+
+.tipo.ROC{
+	background:#ffcf40;
+	color:#fff;
+}
+
+.tipo.SAL{
+	background:#c9a12a;
+	color:#fff;
+}
+
+
+/*
+COM. OTROS ESPACIOS COMPLEMENTARIOS
+SIN. OTROS ESPACIOS SINGULARES
+CON. OTROS ESPACIOS CONVENCIONALES
+PEQ. ESPACIOS CONVENCIONALES PEQUEÑOS Y NO REGLAMENTARIOS*/
+
+
+.tipo.COM{
+	background:#474747;
+	color:#fff;
+}
+
+.tipo.SIN{
+	background:#616161;
+	color:#fff;
+}
+
+.tipo.CON{
+	background:#171717;
+	color:#fff;
+}
+
+.tipo.PEQ{
+	background:#838383;
+	color:#fff;
+}
+
+img.adp-marker {
+	visibility: hidden !important;
+}
+
+/*Accordion IE8/*/
+.accordion-body.collapse {display:none\9 ! important;}
+.accordion-body.collapse.in {display:block\9 ! important;}
+.accordion-body.collapse .accordion-inner{display:none\9 ! important;}
+.accordion-body.collapse.in .accordion-inner{display:block\9 ! important;}
+
+/*All IE*/
+*+html .accordion-body.collapse {display:none ! important;}
+*+html .accordion-body.collapse.in {display:block ! important;}
+*+html .accordion-body.collapse .accordion-inner{display:none ! important;}
+*+html .accordion-body.collapse.in .accordion-inner{display:block ! important;}
+
+.marcador-provincia {
+    margin-right: 3px;
+    margin-top: 15px;
+}
+
+    .marcador-provincia, .marcador-provincia h6, .marcador-provincia h4 {
+        text-align: center;
+    }

@@ -1,0 +1,148 @@
+<!-- Site Showcase -->
+<div class="site-showcase">
+  <!-- Start Page Header -->
+  <div class="parallax page-header" style="background-image:url('/images/bg.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Insertar mapa</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Page Header -->
+</div>
+<!-- Start Content -->
+<div class="main" role="main">
+  <div id="content" class="content full">
+    <div class="container">
+      <div class="page">
+        <div class="alert alert-error fade in" id="error_busqueda" style="display:none;"> <a class="close" data-dismiss="alert" href="#">×</a> Utiliza algún criterio de búsqueda por favor </div>
+
+        <h2>Crea tu widget</h2>
+        <p>Utiliza el formulario para configurar las instalaciones que quieres mostrar en el mapa.</p>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="padding-as25 margin-30 lgray-bg">
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <label for="provincia">Provincia</label>
+                  <p-select
+                    id="provincia"
+                    class="form-control"
+                    [options]="provincias"
+                    [(ngModel)]="provinciaSeleccionada"
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Seleccione una provincia"
+                    (ngModelChange)="generarEnlace()"
+                  >
+                  </p-select>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <label for="municipio">Municipio</label>
+                  <p-select
+                    id="municipio"
+                    class="form-control"
+                    [options]="municipios"
+                    [(ngModel)]="municipioSeleccionada"
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Seleccione un municipio"
+                    (ngModelChange)="generarEnlace()"
+                  >
+                  </p-select>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                  <label for="deporte">Deporte</label>
+                  <p-select
+                    id="deporte"
+                    class="form-control"
+                    [options]="deportes"
+                    [(ngModel)]="deporteSeleccionada"
+                    optionLabel="nombre"
+                    optionValue="id"
+                    placeholder="Seleccione un deporte"
+                    (ngModelChange)="generarEnlace()"
+                  >
+                  </p-select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 col-sm-3">
+                  <label for="anchura">Anchura (pixeles)</label>
+                  <p-inputnumber
+                    inputId="anchura"
+                    name="anchura"
+                    [(ngModel)]="anchura"
+                    [min]="0"
+                    [step]="1"
+                    [useGrouping]="false"
+                    placeholder="Anchura"
+                    fluid
+                    [showButtons]="true"
+                    buttonLayout="horizontal"
+                  >
+                  </p-inputnumber>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                  <label for="altura">Altura (pixeles)</label>
+                  <p-inputnumber
+                    inputId="altura"
+                    name="altura"
+                    [(ngModel)]="altura"
+                    [min]="0"
+                    [step]="1"
+                    [useGrouping]="false"
+                    placeholder="Altura"
+                    fluid
+                    [showButtons]="true"
+                    buttonLayout="horizontal">
+                  </p-inputnumber>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" id="code_row"> <!-- style="display:none;"> -->
+          <div class="col-md-12">
+            <div class="padding-as25 margin-30 lgray-bg">
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="codigoWidget">Copiar el siguiente código en tu web para insertar el widget.</label>
+                  <textarea
+                    [ngModel]="mapa"
+                    name="codigoWidget"
+                    id="codigoWidget"
+                    cols="50"
+                    rows="5"
+                    disabled
+                    class="form-control">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!--
+@section Scripts
+{
+<script src="~/Scripts/censo/FormularioWidget.js"></script>
+<script type="text/javascript">
+var Resources = {
+todos: '@Resources.todos'
+};
+
+loadFormularioWidget(Resources);
+$('#modalError').modal('show');
+
+</script>
+}
+
+-->

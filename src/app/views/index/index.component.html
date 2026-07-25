@@ -1,0 +1,43 @@
+<div class="site-showcase">
+  <div class="slider-mask overlay-transparent"></div>
+  <!-- Start Hero Slider -->
+  <swiper-container
+    class="hero-slider"
+    style="width: 100%; height: 500px;"
+    autoplay="true"
+    delay="3000"
+    loop="true"
+    navigation="true"
+    pagination="false">
+
+    <swiper-slide class="parallax" style="background-image:url('/images/slide1.jpg'); background-size: cover; background-position: center;"></swiper-slide>
+    <swiper-slide class="parallax" style="background-image:url('/images/slide2.jpg'); background-size: cover; background-position: center;"></swiper-slide>
+    <swiper-slide class="parallax" style="background-image:url('/images/slide3.jpg'); background-size: cover; background-position: center;"></swiper-slide>
+    <swiper-slide class="parallax" style="background-image:url('/images/slide4.jpg'); background-size: cover; background-position: center;"></swiper-slide>
+  </swiper-container>
+  <!-- End Hero Slider -->
+
+  <div class="site-search-module">
+    <div class="container">
+      <div class="site-search-module-inside">
+        <form (ngSubmit)="buscar()">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8">
+                <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control input-lg"
+                       placeholder="Escribe algo..." [(ngModel)]="modeloBusqueda.nombreInstalacion">
+              </div>
+              <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-block btn-lg"><i class="fa fa-search"></i> Buscar
+                </button>
+              </div>
+              <div class="col-md-2">
+                <a href="#" id="ads-trigger" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Más</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

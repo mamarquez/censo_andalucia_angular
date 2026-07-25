@@ -1,0 +1,35 @@
+.green-bottom a {
+  color: green; /* color del texto */
+  text-decoration: none; /* sin subrayado */
+  font-weight: bold;
+  pointer-events: auto; /* clickeable */
+}
+
+.green-bottom a:hover {
+  text-decoration: none; /* opcional, sin efecto hover */
+  color: green; /* mismo color al pasar el mouse */
+}
+
+/* Celda con borde inferior verde y texto centrado grande */
+.green-bottom {
+  border: none;
+  border-bottom: 3px solid green;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+  font-size: x-large;
+}
+
+/* Celda vacía para separar columnas */
+.spacer {
+  border: none;
+  width: 20px; /* Ajusta el espacio entre columnas */
+}
+
+/* Opcional: hacer que la tabla esté centrada */
+.center-table {
+  margin: 0 auto;
+  min-width: 300px;
+  text-align: center;
+  border-collapse: collapse; /* Para que el borde inferior se vea limpio */
+}
