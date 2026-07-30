@@ -4,6 +4,10 @@
 
 <router-outlet />
 
-<app-contador></app-contador>
+<!-- Los contadores solo se pintarán si 'mostrarContadores' es true -->
+@if (censoService.mostrarContadores()) {
+  <app-contador />
+}
+
 
 <app-footer />

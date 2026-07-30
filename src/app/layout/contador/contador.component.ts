@@ -1,14 +1,12 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ApiResponse} from '../../models/apiresponse';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import {CensoService} from '../../services/censoService.service';
 
 @Component({
-  selector: 'app-contador',
   standalone: true,
-  imports: [
-    RouterLink
-  ],
+  selector: 'app-contador',
+  imports: [],
   templateUrl: './contador.component.html',
   styleUrls: ['./contador.component.css']
 })
@@ -30,6 +28,7 @@ export class ContadorComponent implements OnInit {
     this.cargarContadorEspaciosDeportivos();
     this.cargarContadorEspaciosComplementarios();
     this.cargarContadorModalidadesDeportivas();
+    this.cargarContadorActividadesDeportivas();
     this.cargarContadorRutas();
   }
 
@@ -67,6 +66,16 @@ export class ContadorComponent implements OnInit {
     this.censoService.numeroModalidadesDeportivas().subscribe({
       next: (response: ApiResponse<any>) => {
         this.contadores.deportivos = response.data;
+        this.cd.detectChanges();
+      },
+      error: (err) => console.error('Error al cargar número de instalaciones', err)
+    });
+  }
+
+  cargarContadorActividadesDeportivas(): void {
+    this.censoService.numeroActividadesDeportivas().subscribe({
+      next: (response: ApiResponse<number>) => {
+        this.contadores.modalidades = response.data;
         this.cd.detectChanges();
       },
       error: (err) => console.error('Error al cargar número de instalaciones', err)

@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { environment } from '../environments/environment';
@@ -10,11 +10,13 @@ import {Configuracion} from '../models/configuracion';
 import {Municipio} from '../models/municipio';
 import {ActividadDeportiva} from '../models/actividaddeportiva';
 import {Filtros} from '../filtros/filtros';
+import {Instalacion} from '../models/instalacion';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CensoService {
+  mostrarContadores = signal(true);
   private readonly http = inject(HttpClient);
   private readonly api = `${environment.apiUrl}`;
   private readonly headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -46,6 +48,12 @@ export class CensoService {
 
   numeroModalidadesDeportivas() {
     return this.http.get<ApiResponse<number>>(`${this.api}/instalaciones/contador`, {
+      params: buildHttpParams(this.filtros), headers: this.headers
+    });
+  }
+
+  numeroActividadesDeportivas() {
+    return this.http.get<ApiResponse<number>>(`${this.api}/actividadesdeportivas/contador`, {
       params: buildHttpParams(this.filtros), headers: this.headers
     });
   }
@@ -97,4 +105,25 @@ export class CensoService {
       params: buildHttpParams(filtros), headers: this.headers
     });
   }
+
+  /**
+   * Obtener instalaciones
+   * @param filtros
+   */
+  cargarInstalaciones(filtros: Filtros = this.filtros) {
+    return this.http.get<ApiResponse<Instalacion[]>>(`${this.api}/instalaciones`, {
+      params: buildHttpParams(filtros), headers: this.headers
+    });
+  }
+
+  /**
+   * Obtener instalacion por su id
+   * @param id Id de la instalacion
+   */
+  cargarInstalacion(id: string) {
+    return this.http.get<ApiResponse<Instalacion>>(`${this.api}/instalaciones/${id}`, {
+      headers: this.headers
+    });
+  }
+
 }

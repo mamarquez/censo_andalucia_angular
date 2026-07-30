@@ -1,0 +1,433 @@
+<app-loader [cargando]="cargando"></app-loader>
+
+@if (!cargando) {
+  <div class="main" role="main">
+  <div id="content" class="content full">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="block-heading">
+            <h4>
+              <span class="heading-icon">
+                <i class="fa fa-caret-right icon-design"></i>
+                <i class="fa fa-th-list"></i>
+              </span>1494 instalaciones</h4>
+              <a href="/ExportarExcel" class="btn btn-default btn-sm pull-right"><i class="fa fa-table"></i> xls</a>
+          </div>
+          <h6>2910 espacios deportivos y 1305 espacios complementarios <a href="/busqueda-mapa" class="btn btn-primary btn-sm pull-right"><i class="fa fa-map-marker"></i> ver en mapa</a></h6>
+
+          <div class="property-listing">
+            <!-- Repetir -->
+            <br/>
+            <ul>
+              @for(instalacion of instalaciones; track instalacion.id) {
+                <li class="type-rent col-md-12">
+                  <div class="col-md-12">
+                    <div class="property-info">
+                      <span class="codigo-ieda">Código: {{ instalacion.codigo }}</span>
+
+                      <h3>
+                        <a [routerLink]="['/instalacion', instalacion.id]">{{ instalacion.nombre }} </a>
+                        @if (instalacion?.municipio) {
+                          <i class="fa fa-map-marker"></i>
+                          <span class="location">{{ instalacion.municipio.nombre }}</span>
+
+                          @if (instalacion?.provincia) {
+                            <span class="province">({{ instalacion.provincia.nombre }})</span>
+                          }
+                        }
+                      </h3>
+            </div>
+          </div>
+        </li>
+              }
+            </ul>
+
+          </div>
+
+          <!--
+            <ul>
+
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código: 040130002</span>
+                    <h3><a href="instalacion/7907">PISTAS POLIDEPORTIVAS MUNICIPALES DE LA AVENIDA DEL MEDITERRÁNEO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130003</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7908</span>
+                    <h3><a href="instalacion/7908">I.E.S. NICOLÁS SALMERÓN Y ALONSO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130004</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7922</span>
+                    <h3><a href="instalacion/7922">I.E.S. MAESTRO PADILLA</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130005</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7923</span>
+                    <h3><a href="instalacion/7923">C.E.I.P. LOPE DE VEGA</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130006</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7924</span>
+                    <h3><a href="instalacion/7924">C.E.I.P. MAR MEDITERRÁNEO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130007</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7925</span>
+                    <h3><a href="instalacion/7925">C.E.I.P. RAFAEL ALBERTI</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130008</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7926</span>
+                    <h3><a href="instalacion/7926">C.D.P. NUESTRA SEÑORA DE FÁTIMA</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130009</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7927</span>
+                    <h3><a href="instalacion/7927">C.E.I.P. VIRGEN DEL LORETO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130010</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7928</span>
+                    <h3><a href="instalacion/7928">C.E.I.P. SAN VALENTÍN</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                  <div class="property-info">
+                    <span class="codigo-ieda">Código IEDA: 040130012</span>
+                    <span class="codigo-ieda separado">Código IEDA (anterior): 7931</span>
+                    <h3><a href="instalacion/7931">C.E.I.P. SAN FERNANDO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
+
+                    <div class="tipos">
+                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+-->
+
+          <div class="text-center">
+            <ul class="pagination justify-content-center">
+              <!-- Botón primera página -->
+              <li class="page-item disabled">
+                <a class="page-link" href="/busqueda-listado?Page=1">«</a>
+              </li>
+
+              <!-- Páginas dinámicas -->
+              <li class="page-item active">
+                <a class="page-link" href="/busqueda-listado?Page=1">1</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=2">2</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=3">3</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=4">4</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=5">5</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=6">6</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=7">7</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=8">8</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=9">9</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=10">10</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=11">11</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=12">12</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=13">13</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=14">14</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=15">15</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=16">16</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=17">17</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=18">18</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=19">19</a>
+              </li>
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=20">20</a>
+              </li>
+
+              <!-- Botón última página -->
+              <li class="page-item ">
+                <a class="page-link" href="/busqueda-listado?Page=150">»</a>
+              </li>
+            </ul>
+
+            <form method="get" action="/busqueda-listado" class="d-flex align-items-center mb-2">
+              <select name="page" class="form-select form-select-sm me-2" style="height:auto; width:9.2rem;">
+                <option value="1" selected="">Página 1</option>
+                <option value="2">Página 2</option>
+                <option value="3">Página 3</option>
+                <option value="4">Página 4</option>
+                <option value="5">Página 5</option>
+                <option value="6">Página 6</option>
+                <option value="7">Página 7</option>
+                <option value="8">Página 8</option>
+                <option value="9">Página 9</option>
+                <option value="10">Página 10</option>
+                <option value="11">Página 11</option>
+                <option value="12">Página 12</option>
+                <option value="13">Página 13</option>
+                <option value="14">Página 14</option>
+                <option value="15">Página 15</option>
+                <option value="16">Página 16</option>
+                <option value="17">Página 17</option>
+                <option value="18">Página 18</option>
+                <option value="19">Página 19</option>
+                <option value="20">Página 20</option>
+                <option value="21">Página 21</option>
+                <option value="22">Página 22</option>
+                <option value="23">Página 23</option>
+                <option value="24">Página 24</option>
+                <option value="25">Página 25</option>
+                <option value="26">Página 26</option>
+                <option value="27">Página 27</option>
+                <option value="28">Página 28</option>
+                <option value="29">Página 29</option>
+                <option value="30">Página 30</option>
+                <option value="31">Página 31</option>
+                <option value="32">Página 32</option>
+                <option value="33">Página 33</option>
+                <option value="34">Página 34</option>
+                <option value="35">Página 35</option>
+                <option value="36">Página 36</option>
+                <option value="37">Página 37</option>
+                <option value="38">Página 38</option>
+                <option value="39">Página 39</option>
+                <option value="40">Página 40</option>
+                <option value="41">Página 41</option>
+                <option value="42">Página 42</option>
+                <option value="43">Página 43</option>
+                <option value="44">Página 44</option>
+                <option value="45">Página 45</option>
+                <option value="46">Página 46</option>
+                <option value="47">Página 47</option>
+                <option value="48">Página 48</option>
+                <option value="49">Página 49</option>
+                <option value="50">Página 50</option>
+                <option value="51">Página 51</option>
+                <option value="52">Página 52</option>
+                <option value="53">Página 53</option>
+                <option value="54">Página 54</option>
+                <option value="55">Página 55</option>
+                <option value="56">Página 56</option>
+                <option value="57">Página 57</option>
+                <option value="58">Página 58</option>
+                <option value="59">Página 59</option>
+                <option value="60">Página 60</option>
+                <option value="61">Página 61</option>
+                <option value="62">Página 62</option>
+                <option value="63">Página 63</option>
+                <option value="64">Página 64</option>
+                <option value="65">Página 65</option>
+                <option value="66">Página 66</option>
+                <option value="67">Página 67</option>
+                <option value="68">Página 68</option>
+                <option value="69">Página 69</option>
+                <option value="70">Página 70</option>
+                <option value="71">Página 71</option>
+                <option value="72">Página 72</option>
+                <option value="73">Página 73</option>
+                <option value="74">Página 74</option>
+                <option value="75">Página 75</option>
+                <option value="76">Página 76</option>
+                <option value="77">Página 77</option>
+                <option value="78">Página 78</option>
+                <option value="79">Página 79</option>
+                <option value="80">Página 80</option>
+                <option value="81">Página 81</option>
+                <option value="82">Página 82</option>
+                <option value="83">Página 83</option>
+                <option value="84">Página 84</option>
+                <option value="85">Página 85</option>
+                <option value="86">Página 86</option>
+                <option value="87">Página 87</option>
+                <option value="88">Página 88</option>
+                <option value="89">Página 89</option>
+                <option value="90">Página 90</option>
+                <option value="91">Página 91</option>
+                <option value="92">Página 92</option>
+                <option value="93">Página 93</option>
+                <option value="94">Página 94</option>
+                <option value="95">Página 95</option>
+                <option value="96">Página 96</option>
+                <option value="97">Página 97</option>
+                <option value="98">Página 98</option>
+                <option value="99">Página 99</option>
+                <option value="100">Página 100</option>
+                <option value="101">Página 101</option>
+                <option value="102">Página 102</option>
+                <option value="103">Página 103</option>
+                <option value="104">Página 104</option>
+                <option value="105">Página 105</option>
+                <option value="106">Página 106</option>
+                <option value="107">Página 107</option>
+                <option value="108">Página 108</option>
+                <option value="109">Página 109</option>
+                <option value="110">Página 110</option>
+                <option value="111">Página 111</option>
+                <option value="112">Página 112</option>
+                <option value="113">Página 113</option>
+                <option value="114">Página 114</option>
+                <option value="115">Página 115</option>
+                <option value="116">Página 116</option>
+                <option value="117">Página 117</option>
+                <option value="118">Página 118</option>
+                <option value="119">Página 119</option>
+                <option value="120">Página 120</option>
+                <option value="121">Página 121</option>
+                <option value="122">Página 122</option>
+                <option value="123">Página 123</option>
+                <option value="124">Página 124</option>
+                <option value="125">Página 125</option>
+                <option value="126">Página 126</option>
+                <option value="127">Página 127</option>
+                <option value="128">Página 128</option>
+                <option value="129">Página 129</option>
+                <option value="130">Página 130</option>
+                <option value="131">Página 131</option>
+                <option value="132">Página 132</option>
+                <option value="133">Página 133</option>
+                <option value="134">Página 134</option>
+                <option value="135">Página 135</option>
+                <option value="136">Página 136</option>
+                <option value="137">Página 137</option>
+                <option value="138">Página 138</option>
+                <option value="139">Página 139</option>
+                <option value="140">Página 140</option>
+                <option value="141">Página 141</option>
+                <option value="142">Página 142</option>
+                <option value="143">Página 143</option>
+                <option value="144">Página 144</option>
+                <option value="145">Página 145</option>
+                <option value="146">Página 146</option>
+                <option value="147">Página 147</option>
+                <option value="148">Página 148</option>
+                <option value="149">Página 149</option>
+                <option value="150">Página 150</option>
+              </select>
+              <button type="submit" class="btn btn-primary btn-xs">Ir</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="sidebar right-sidebar col-md-3" id="filtrosResultadoBusqueda">
+          <div class="widget sidebar-widget featured-properties-widget">
+            <h3 class="widgettitle">Filtros de la búsqueda</h3>
+            <ul class="carets">
+              <li><i class="fa fa-caret-right"></i> <strong>Provincia:</strong> Almería</li>
+
+            </ul>
+            <a href="/buscar" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Cambiar búsqueda</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+}

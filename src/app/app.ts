@@ -1,9 +1,10 @@
-import { Component, signal } from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { MenuComponent } from './layout/menu/menu.component';
 import { ContadorComponent } from './layout/contador/contador.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import {CensoService} from './services/censoService.service';
 
 @Component({
   standalone: true,
@@ -14,4 +15,5 @@ import { FooterComponent } from './layout/footer/footer.component';
 })
 export class App {
   protected readonly title = signal('censo_andalucia_angular');
+  censoService = inject(CensoService);
 }

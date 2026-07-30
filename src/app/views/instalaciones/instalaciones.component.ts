@@ -1,22 +1,29 @@
-import {ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, OnInit} from '@angular/core';
+import {Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
-import {Provincia} from '../../models/provincia';
-
+import {LoaderComponent} from '../../layout/loader/loader.component';
 import {register} from 'swiper/element/bundle';
+import {Instalacion} from '../../models/instalacion';
+import {Filtros} from '../../filtros/filtros';
 
 @Component({
   standalone: true,
-  selector: 'app-inicio',
-  imports: [CommonModule, FormsModule],
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  selector: 'app-instalaciones',
+  imports: [CommonModule, FormsModule, LoaderComponent],
+  templateUrl: './instalaciones.component.html',
+  styleUrls: ['./instalaciones.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class InicioComponent implements OnInit {
+export class InstalacionesComponent implements OnInit {
+
+  cargando: boolean = true;
+
+  filtros: Filtros = {
+    baja: false
+  };
 
   constructor(private censoService: CensoService, private router: Router, private cd: ChangeDetectorRef) {
     register();
@@ -31,11 +38,7 @@ export class InicioComponent implements OnInit {
     nivelDotacion: ''
   };
 
-  provincias: Provincia[] = [];
-  municipios: any[] = [];
-  clasesInstalacion: any[] = [];
-  deportes: any[] = [];
-  nivelesDotacion: any[] = [];
+  instalaciones: Instalacion[] = [];
 
   // 4. Reemplaza el archivo Resources.resx
   resources = {
@@ -57,15 +60,23 @@ export class InicioComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.cargarProvincias();
+    this.cargarInstalaciones();
   }
 
-  cargarProvincias(): void {
-    this.censoService.cargarProvincias().subscribe({
-      next: (response: ApiResponse<Provincia[]>) => {
-        this.provincias = response.data;
+  cargarInstalaciones(): void {
+    this.censoService.cargarInstalaciones(this.filtros).subscribe({
+      next: (response: ApiResponse<any>) => {
+        this.instalaciones = response.data;
+
+        console.log(response.data);
+
+        this.cargando = false;
+        this.cd.detectChanges();
       },
-      error: (err) => console.error('Error al cargar provincias', err)
+      error: (err) => {
+        console.error('Error al cargar instalaciones', err);
+        this.cargando = false;
+      }
     });
   }
 

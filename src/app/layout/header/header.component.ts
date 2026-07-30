@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { environment } from '../../environments/environment';
 
 @Component({
-  selector: 'app-header',
   standalone: true,
+  selector: 'app-header',
   imports: [CommonModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']

@@ -1,5 +1,8 @@
-<!-- Site Showcase -->
-<div class="site-showcase">
+<app-loader [cargando]="cargando"></app-loader>
+
+@if (!cargando) {
+  <!-- Site Showcase -->
+  <div class="site-showcase">
   <!-- Start Page Header -->
   <div class="parallax page-header" style="background-image:url('/images/bg.jpg');">
     <div class="container">
@@ -12,8 +15,8 @@
   </div>
   <!-- End Page Header -->
 </div>
-<!-- Start Content -->
-<div class="main" role="main">
+  <!-- Start Content -->
+  <div class="main" role="main">
   <div id="content" class="content full">
     <div class="container">
       <div class="page">
@@ -29,3 +32,4 @@
     </div>
   </div>
 </div>
+}

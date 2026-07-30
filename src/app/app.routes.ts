@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import {WidgetComponent} from './views/widget/widget.component';
 
 export const routes: Routes = [
   {
@@ -8,7 +7,6 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    // Cuando el usuario vaya a /index, carga el InicioComponent
     path: 'index',
     loadComponent: () => import('./views/index/index.component').then(m => m.InicioComponent)
   },
@@ -27,6 +25,14 @@ export const routes: Routes = [
   {
     path: "obtener-widget",
     loadComponent: () => import('./views/widget/widget.component').then(m => m.WidgetComponent)
+  },
+  {
+    path: "instalaciones",
+    loadComponent: () => import('./views/instalaciones/instalaciones.component').then(m => m.InstalacionesComponent)
+  },
+  {
+    path: "instalacion/:id",
+    loadComponent: () => import('./views/instalacion/instalacion.component').then(m => m.InstalacionComponent)
   },
   /*
   {

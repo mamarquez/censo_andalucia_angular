@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -10,8 +10,8 @@ import {register} from 'swiper/element/bundle';
 import {Filtros} from '../../filtros/filtros';
 
 @Component({
-  selector: 'app-acerca',
   standalone: true,
+  selector: 'app-acerca',
   imports: [CommonModule, FormsModule],
   templateUrl: './acerca.component.html',
   styleUrls: ['./acerca.component.css']
@@ -42,8 +42,7 @@ export class AcercaComponent implements OnInit {
       next: (response: ApiResponse<Configuracion[]>) => {
         if (response.data && response.data.length > 0) {
           const htmlCrudo = response.data[0].valor;
-          const htmlSeguro = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
-          this.acerca = htmlSeguro;
+          this.acerca = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
           this.cd.detectChanges();
         }
       },

@@ -7,8 +7,8 @@ import {Router, RouterLink} from '@angular/router';
 import {Filtros} from '../../filtros/filtros';
 
 @Component({
-  selector: 'app-footer',
   standalone: true,
+  selector: 'app-footer',
   imports: [
     RouterLink
   ],

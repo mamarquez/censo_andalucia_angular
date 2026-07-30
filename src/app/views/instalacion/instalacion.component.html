@@ -1,0 +1,150 @@
+<app-loader [cargando]="cargando"></app-loader>
+
+@if (!cargando) {
+
+    <div class="site-showcase">
+        <div class="clearfix map-single-page" id="gmap"></div>
+    </div>
+
+    <div class="main" role="main">
+      <div id="content" class="content full">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="single-property">
+                <h2 class="page-title">
+                  <span class="codigo-ieda">Código: {{ instalacion.codigo }}</span>
+                  <br/>
+                  {{ instalacion.nombre }}
+                  <br/>
+                  @if (instalacion.municipio) {
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span class="location">{{ instalacion.municipio.nombre }}
+                    @if (instalacion.provincia) {
+                        ({{ instalacion.provincia.nombre }})
+                    }
+                    </span>
+                  }
+                </h2>
+
+                <!--
+                @if (Model.tipos_instalacion != null)
+                {
+                  foreach (BBDD_Censo.Database.CID_Instalaciones_Clases_Idioma _tipo in Model.tipos_instalacion)
+                  {
+                    <div class="tipo @_tipo.ID_ClaseInstalacion">
+                      <strong><i class="fa fa-flag"></i></strong><span>@_tipo.Descripcion</span>
+                    </div>
+                  }
+                }
+                -->
+
+                <hr>
+
+
+              </div>
+            </div>
+
+            <!-- Lateral -->
+            <div class="sidebar right-sidebar col-md-4">
+              <div class="agent-contact-details">
+                <h4>
+                  <i class="fa fa-map-marker"></i> Contacto
+                </h4>
+
+                <div class="flex-row">
+                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#loc">
+                    <i class="fa fa-compass"></i> Localización
+                  </button>
+                  <div class="pull-right">
+
+                    <a id="boton_ruta" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+                       <!--
+                       href="https://www.google.es/maps/@("?q="+Model.instalacion.CID_Instalaciones.CID_Instalaciones_GeoposicionXY.X+","+Model.instalacion.CID_Instalaciones.CID_Instalaciones_GeoposicionXY.Y)">
+                    -->
+                        <i class="fa fa-road"></i> Como llegar
+                    </a>
+                  </div>
+                </div>
+
+                <br />
+
+                <ul class="list-group">
+                  @if (instalacion.direccion) {
+                    <li class="list-group-item"> {{ instalacion.direccion }}
+                        @if (instalacion.cp) {
+                            , {{ instalacion.cp }}
+                        }
+                        @if (instalacion.municipio) {
+                            , {{ instalacion.municipio.nombre }}
+                        }
+                        @if (instalacion.provincia) {
+                            ({{ instalacion.provincia.nombre }})
+                        }
+                    </li>
+                  }
+
+                  @if (instalacion.telefonos) {
+                      <li class="list-group-item"> Teléfono/s
+                        @for(telefono of instalacion.telefonos; track telefono.id) {
+                          <span class="badge">{{telefono.numero}}</span>
+                        }
+                      </li>
+                  }
+
+                  @if (instalacion.fax) {
+                    <li class="list-group-item"> Fax
+                        <span class="badge">{{ instalacion.fax }}</span>
+                    </li>
+                  }
+
+                  @if (instalacion.web) {
+                    <li class="list-group-item"> Web
+                      <span class="badge">
+                        <a [href]="instalacion.web" target="_blank" rel="noopener">{{ instalacion.web }}</a></span>
+                    </li>
+                  }
+
+                  @if (instalacion.email) {
+                    <li class="list-group-item"> Correo electronico
+                      <span class="badge">
+                        <a [href]="'mailto:' + instalacion.email" target="_blank" rel="noopener">{{ instalacion.email }}</a>
+                      </span>
+                    </li>
+                  }
+                </ul>
+
+              </div>
+
+              <br/>
+
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#widget" style="height: 50px;width: 100%;font-size: 110%;"><i class="fa fa-code"></i> Muestra esta instalación en tu web</button>
+
+              <hr>
+
+                @if (instalacion.gestor) {
+                    <h4><i class="fa fa-user"></i> Tipo de gestor</h4>
+                    {{ instalacion.gestor.nombre }}
+                    <ul class="carets">
+                      @if (instalacion.gestor.tipoGestor) {
+                        <li>{{ instalacion.gestor.tipoGestor.nombre }}</li>
+                      }
+                    </ul>
+                }
+
+              <hr>
+
+              <h4 class="atributo1">Accesibilidad/Supresión de barreras arquitectónicas</h4>
+              <div class="additional-amenities">
+                <span class="available"><i class="fa fa-check-square"></i> @_sub.nombre: @_sub.valor</span>
+              </div>
+
+              <h6>Descargar: <a [href]="'/ExportarPDF/' + instalacion.id" class="btn btn-default btn-sm" target="_blank" rel="noopener"><i class="fa fa-file-text"></i> pdf</a></h6>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+}
