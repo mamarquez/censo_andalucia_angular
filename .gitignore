@@ -36,6 +36,9 @@ testem.log
 /typings
 __screenshots__/
 
+# MCP local config (contains tokens)
+.mcp.json
+
 # System files
 .DS_Store
 Thumbs.db
