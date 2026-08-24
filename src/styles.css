@@ -61,6 +61,33 @@ table {
   outline: none;
 }
 
+/* El reset global de arriba (margin/padding/border a 0 en div, ul, li, etc.
+   y line-height:1 en body) rompe el combo cerrado y el desplegable de
+   PrimeNG (p-select, p-multiselect...), que dependen de su propio
+   box-model y line-height. Se restaura aquí sin tocar su display/width. */
+.p-select,
+.p-multiselect {
+  display: flex;
+  width: 100%;
+}
+
+.p-select-label,
+.p-select-dropdown,
+.p-multiselect-label,
+.p-multiselect-dropdown,
+.p-component-overlay,
+.p-select-overlay,
+.p-select-list-container,
+.p-select-list,
+.p-select-option,
+.p-select-option-group,
+.p-multiselect-overlay,
+.p-multiselect-list,
+.p-multiselect-option {
+  all: revert;
+  box-sizing: border-box;
+}
+
 iframe {
   border: 0;
 }
@@ -1337,15 +1364,8 @@ html[xmlns] .slides {
   border-radius: 15px 15px 0 0
 }
 
-.site-search-module-inside .btn {
-  padding-top: 14px;
-  padding-bottom: 12px;
-}
-
 #ads-trigger {
   display: inline-block;
-  padding-top: 11px;
-  padding-bottom: 11px;
 }
 
 .main {

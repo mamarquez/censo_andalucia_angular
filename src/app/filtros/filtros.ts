@@ -4,4 +4,5 @@ export interface Filtros {
   valor?: string | null;
   baja?: boolean | null;
   activo?: boolean | null;
+  cpro?: string | null;
 }

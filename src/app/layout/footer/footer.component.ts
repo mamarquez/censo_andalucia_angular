@@ -5,12 +5,14 @@ import {Configuracion} from '../../models/configuracion';
 import {CensoService} from '../../services/censoService.service';
 import {Router, RouterLink} from '@angular/router';
 import {Filtros} from '../../filtros/filtros';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-footer',
   imports: [
-    RouterLink
+    RouterLink,
+    TranslatePipe
   ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']

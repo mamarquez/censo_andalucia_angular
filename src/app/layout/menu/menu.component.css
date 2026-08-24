@@ -1,0 +1,31 @@
+@media only screen and (max-width: 992px) {
+  .main-menu-wrapper.open {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .navigation > ul {
+    display: inline-flex;
+    float: none;
+  }
+
+  .navigation > ul > li:first-child > a {
+    border-left: 0;
+  }
+}
+
+.navigation > ul > li > a {
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 3px solid transparent;
+  padding: 15px 22px !important;
+  transition: color 0.15s ease, border-bottom-color 0.15s ease, background-color 0.15s ease;
+}
+
+.navigation ul > li:hover > a,
+.navigation ul > li > a.current_menu_item {
+  color: #005128;
+  background: #fbfbfb;
+  border-bottom-color: #005128;
+}

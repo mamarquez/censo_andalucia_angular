@@ -8,11 +8,12 @@ import {ApiResponse} from '../../models/apiresponse';
 import {Configuracion} from '../../models/configuracion';
 import {register} from 'swiper/element/bundle';
 import {Filtros} from '../../filtros/filtros';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-planes',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './planes-locales.component.html',
   styleUrls: ['./planes-locales.component.css']
 })

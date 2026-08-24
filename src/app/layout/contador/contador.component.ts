@@ -2,11 +2,12 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ApiResponse} from '../../models/apiresponse';
 import {Router} from '@angular/router';
 import {CensoService} from '../../services/censoService.service';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-contador',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './contador.component.html',
   styleUrls: ['./contador.component.css']
 })

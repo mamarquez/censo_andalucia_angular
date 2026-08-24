@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-5 col-sm-6 footer-widget widget">
-        <a href="https://www.juntadeandalucia.es/" target="_blank" rel="noopener"><img src="/images/junta.png" alt="Junta de Andalucía"></a>
+        <a href="https://www.juntadeandalucia.es/" target="_blank" rel="noopener"><img src="/images/junta.png" [attr.alt]="'footer.junta_alt' | translate"></a>
       </div>
       <div class="col-md-5 col-sm-6 footer-widget widget">
         &nbsp;
@@ -16,16 +16,16 @@
   <div class="container">
     <div class="row">
       <div class="copyrights-col-left col-md-4 col-sm-4">
-        <p>&copy; {{ anio }} Junta de Andalucía.</p>
+        <p>&copy; {{ anio }} {{ 'footer.copyright' | translate }}</p>
       </div>
       <div class="col-md-4 col-sm-4 text-center">
-        <p>Versión: {{ version }}</p>
+        <p>{{ 'footer.version' | translate }} {{ version }}</p>
       </div>
       <div class="col-md-4 col-sm-4">
-        <a routerLink="/informacion-legal" class=" pull-right">Información Legal</a>
+        <a routerLink="/informacion-legal" class="float-end">{{ 'footer.informacion_legal' | translate }}</a>
       </div>
     </div>
   </div>
 </footer>
 
-<a id="back-to-top" class="back-to-top"><i class="fa fa-angle-double-up" style="margin-left: 20px"> Subir</i></a>
+<a id="back-to-top" class="back-to-top"><i class="fa fa-angle-double-up" style="margin-left: 20px"> {{ 'footer.subir' | translate }}</i></a>

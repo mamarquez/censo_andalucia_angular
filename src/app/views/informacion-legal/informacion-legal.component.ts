@@ -8,11 +8,12 @@ import {ApiResponse} from '../../models/apiresponse';
 import {Configuracion} from '../../models/configuracion';
 import {Filtros} from '../../filtros/filtros';
 import {LoaderComponent} from '../../layout/loader/loader.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-informacion-legal',
-  imports: [CommonModule, FormsModule, LoaderComponent],
+  imports: [CommonModule, FormsModule, LoaderComponent, TranslatePipe],
   templateUrl: './informacion-legal.component.html',
   styleUrls: ['./informacion-legal.component.css']
 })

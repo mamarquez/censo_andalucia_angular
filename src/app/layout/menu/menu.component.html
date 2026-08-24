@@ -1,15 +1,15 @@
-<div class="main-menu-wrapper">
+<div class="main-menu-wrapper" [class.open]="menuAbierto()">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <nav class="navigation">
           <ul class="sf-menu">
-            <li><a href="/index.html">Entrada</a></li>
-            <li><a href="">Busqueda avanzada</a></li>
-            <li><a href="">Mapa de instalaciones</a></li>
-            <li><a href="/acerca-de-los-datos-del-censo">Acerca del inventario</a></li>
-            <li><a href="/obtener-widget">Insertar mapa</a></li>
-            <li><a href="/municipios-planes-locales">Planes locales</a></li>
+            <li><a routerLink="/index" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.entrada' | translate }}</a></li>
+            <li><a href="" (click)="cerrarMenu()">{{ 'menu.busqueda_avanzada' | translate }}</a></li>
+            <li><a href="" (click)="cerrarMenu()">{{ 'menu.mapa_instalaciones' | translate }}</a></li>
+            <li><a routerLink="/acerca-de-los-datos-del-censo" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.acerca_inventario' | translate }}</a></li>
+            <li><a routerLink="/obtener-widget" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.insertar_mapa' | translate }}</a></li>
+            <li><a routerLink="/municipios-planes-locales" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.planes_locales' | translate }}</a></li>
           </ul>
         </nav>
       </div>

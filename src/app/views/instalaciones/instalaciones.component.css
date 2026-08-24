@@ -1,0 +1,20 @@
+.btn-ver-mapa {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #005128;
+  --bs-btn-border-color: #005128;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #003d1e;
+  --bs-btn-hover-border-color: #003d1e;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #003318;
+  --bs-btn-active-border-color: #003318;
+}
+
+.pagination .page-item:not(.active):not(.disabled) .page-link {
+  color: #005128;
+}
+
+.pagination .page-item:not(.active):not(.disabled) .page-link:hover {
+  color: #003d1e;
+  background-color: #f0f7f3;
+}

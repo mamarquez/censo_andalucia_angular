@@ -17,6 +17,7 @@ import {Instalacion} from '../models/instalacion';
 })
 export class CensoService {
   mostrarContadores = signal(true);
+  menuAbierto = signal(false);
   private readonly http = inject(HttpClient);
   private readonly api = `${environment.apiUrl}`;
   private readonly headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -72,9 +73,9 @@ export class CensoService {
     });
   }
 
-  cargarMunicipios() {
+  cargarMunicipios(filtros: Filtros = this.filtros) {
     return this.http.get<ApiResponse<Municipio[]>>(`${this.api}/municipios`, {
-      params: buildHttpParams(this.filtros), headers: this.headers
+      params: buildHttpParams(filtros), headers: this.headers
     });
   }
 

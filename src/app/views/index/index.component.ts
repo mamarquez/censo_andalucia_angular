@@ -7,11 +7,12 @@ import {ApiResponse} from '../../models/apiresponse';
 import {Provincia} from '../../models/provincia';
 
 import {register} from 'swiper/element/bundle';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-inicio',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -70,6 +71,8 @@ export class InicioComponent implements OnInit {
   }
 
   buscar(): void {
-    // Lógica de búsqueda
+    this.router.navigate(['/instalaciones'], {
+      queryParams: { nombre: this.modeloBusqueda.nombreInstalacion || null }
+    });
   }
 }

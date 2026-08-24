@@ -1,18 +1,19 @@
 import {Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
 import {LoaderComponent} from '../../layout/loader/loader.component';
 import {register} from 'swiper/element/bundle';
 import {Instalacion} from '../../models/instalacion';
 import {Filtros} from '../../filtros/filtros';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-instalaciones',
-  imports: [CommonModule, FormsModule, LoaderComponent],
+  imports: [CommonModule, FormsModule, LoaderComponent, TranslatePipe],
   templateUrl: './instalaciones.component.html',
   styleUrls: ['./instalaciones.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -25,7 +26,12 @@ export class InstalacionesComponent implements OnInit {
     baja: false
   };
 
-  constructor(private censoService: CensoService, private router: Router, private cd: ChangeDetectorRef) {
+  constructor(
+    private censoService: CensoService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private cd: ChangeDetectorRef
+  ) {
     register();
   }
 
@@ -60,6 +66,11 @@ export class InstalacionesComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    const nombre = this.route.snapshot.queryParamMap.get('nombre');
+    if (nombre) {
+      this.filtros.nombre = nombre;
+      this.modeloBusqueda.nombreInstalacion = nombre;
+    }
     this.cargarInstalaciones();
   }
 

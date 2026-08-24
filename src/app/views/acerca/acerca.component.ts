@@ -8,11 +8,12 @@ import {ApiResponse} from '../../models/apiresponse';
 import {Configuracion} from '../../models/configuracion';
 import {register} from 'swiper/element/bundle';
 import {Filtros} from '../../filtros/filtros';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-acerca',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './acerca.component.html',
   styleUrls: ['./acerca.component.css']
 })

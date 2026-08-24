@@ -1,0 +1,93 @@
+{
+  "widget": {
+    "titulo_pagina": "Embed map",
+    "alerta_busqueda": "Please use a search criterion",
+    "titulo": "Create your widget",
+    "descripcion": "Use the form below to configure the facilities you want to show on the map.",
+    "provincia": "Province",
+    "provincia_placeholder": "Select a province",
+    "provincia_todas": "All",
+    "municipio": "Municipality",
+    "municipio_placeholder": "Select a municipality",
+    "municipio_todos": "All",
+    "deporte": "Sport",
+    "deporte_placeholder": "Select a sport",
+    "deporte_todos": "All",
+    "anchura": "Width (pixels)",
+    "altura": "Height (pixels)",
+    "codigo_label": "Copy the following code into your website to embed the widget."
+  },
+  "menu": {
+    "entrada": "Home",
+    "busqueda_avanzada": "Advanced search",
+    "mapa_instalaciones": "Facilities map",
+    "acerca_inventario": "About the inventory",
+    "insertar_mapa": "Embed map",
+    "planes_locales": "Local plans"
+  },
+  "header": {
+    "gestion": "Management",
+    "logo_alt": "Andalusian Inventory of Sports Facilities and Equipment",
+    "junta_alt": "Regional Government of Andalusia"
+  },
+  "footer": {
+    "junta_alt": "Regional Government of Andalusia",
+    "copyright": "Regional Government of Andalusia.",
+    "version": "Version:",
+    "informacion_legal": "Legal Information",
+    "subir": "Back to top"
+  },
+  "index": {
+    "buscar_placeholder": "Type something...",
+    "buscar": "Search",
+    "mas": "More"
+  },
+  "planes_locales": {
+    "titulo_pagina": "Local Plans"
+  },
+  "informacion_legal": {
+    "titulo_pagina": "Legal information"
+  },
+  "acerca": {
+    "titulo_pagina": "About the inventory"
+  },
+  "loader": {
+    "cargando": "Loading..."
+  },
+  "contador": {
+    "instalaciones": "Facilities",
+    "espacios_deportivos": "Sports areas",
+    "espacios_complementarios": "Complementary areas",
+    "modalidades_deportivas": "Sports disciplines",
+    "modalidad_deportiva": "Sports discipline",
+    "rutas_deportivas": "Sports routes"
+  },
+  "instalaciones": {
+    "total_instalaciones": "facilities",
+    "xls": "xls",
+    "resumen_espacios": "sports areas and",
+    "espacios_complementarios": "complementary areas",
+    "ver_en_mapa": "view on map",
+    "codigo": "Code",
+    "ir": "Go",
+    "pagina": "Page",
+    "filtros_busqueda": "Search filters",
+    "provincia": "Province",
+    "cambiar_busqueda": "Change search"
+  },
+  "instalacion": {
+    "codigo": "Code",
+    "contacto": "Contact",
+    "localizacion": "Location",
+    "como_llegar": "Get directions",
+    "telefono": "Phone",
+    "fax": "Fax",
+    "web": "Website",
+    "correo_electronico": "Email",
+    "mostrar_en_web": "Show this facility on your website",
+    "tipo_gestor": "Manager type",
+    "accesibilidad": "Accessibility/Architectural barrier removal",
+    "descargar": "Download:",
+    "pdf": "pdf"
+  }
+}

@@ -11,10 +11,10 @@
               <span class="heading-icon">
                 <i class="fa fa-caret-right icon-design"></i>
                 <i class="fa fa-th-list"></i>
-              </span>1494 instalaciones</h4>
-              <a href="/ExportarExcel" class="btn btn-default btn-sm pull-right"><i class="fa fa-table"></i> xls</a>
+              </span>1494 {{ 'instalaciones.total_instalaciones' | translate }}</h4>
+              <a href="/ExportarExcel" class="btn btn-outline-secondary btn-sm float-end"><i class="fa fa-table"></i> {{ 'instalaciones.xls' | translate }}</a>
           </div>
-          <h6>2910 espacios deportivos y 1305 espacios complementarios <a href="/busqueda-mapa" class="btn btn-primary btn-sm pull-right"><i class="fa fa-map-marker"></i> ver en mapa</a></h6>
+          <h6>2910 {{ 'instalaciones.resumen_espacios' | translate }} 1305 {{ 'instalaciones.espacios_complementarios' | translate }} <a href="/busqueda-mapa" class="btn btn-ver-mapa btn-sm float-end"><i class="fa fa-map-marker"></i> {{ 'instalaciones.ver_en_mapa' | translate }}</a></h6>
 
           <div class="property-listing">
             <!-- Repetir -->
@@ -24,13 +24,12 @@
                 <li class="type-rent col-md-12">
                   <div class="col-md-12">
                     <div class="property-info">
-                      <span class="codigo-ieda">Código: {{ instalacion.codigo }}</span>
+                      <span class="codigo-ieda">{{ 'instalaciones.codigo' | translate }}: {{ instalacion.codigo }}</span>
 
                       <h3>
                         <a [routerLink]="['/instalacion', instalacion.id]">{{ instalacion.nombre }} </a>
                         @if (instalacion?.municipio) {
-                          <i class="fa fa-map-marker"></i>
-                          <span class="location">{{ instalacion.municipio.nombre }}</span>
+                          <span class="location"><i class="fa fa-map-marker"></i> {{ instalacion.municipio.nombre }}</span>
 
                           @if (instalacion?.provincia) {
                             <span class="province">({{ instalacion.provincia.nombre }})</span>
@@ -257,9 +256,9 @@
               </li>
             </ul>
 
-            <form method="get" action="/busqueda-listado" class="d-flex align-items-center mb-2">
+            <form method="get" action="/busqueda-listado" class="d-flex justify-content-center align-items-center mt-3 mb-2">
               <select name="page" class="form-select form-select-sm me-2" style="height:auto; width:9.2rem;">
-                <option value="1" selected="">Página 1</option>
+                <option value="1" selected="">{{ 'instalaciones.pagina' | translate }} 1</option>
                 <option value="2">Página 2</option>
                 <option value="3">Página 3</option>
                 <option value="4">Página 4</option>
@@ -410,19 +409,19 @@
                 <option value="149">Página 149</option>
                 <option value="150">Página 150</option>
               </select>
-              <button type="submit" class="btn btn-primary btn-xs">Ir</button>
+              <button type="submit" class="btn btn-ver-mapa btn-sm">{{ 'instalaciones.ir' | translate }}</button>
             </form>
           </div>
         </div>
 
         <div class="sidebar right-sidebar col-md-3" id="filtrosResultadoBusqueda">
           <div class="widget sidebar-widget featured-properties-widget">
-            <h3 class="widgettitle">Filtros de la búsqueda</h3>
+            <h3 class="widgettitle">{{ 'instalaciones.filtros_busqueda' | translate }}</h3>
             <ul class="carets">
-              <li><i class="fa fa-caret-right"></i> <strong>Provincia:</strong> Almería</li>
+              <li><i class="fa fa-caret-right"></i> <strong>{{ 'instalaciones.provincia' | translate }}:</strong> Almería</li>
 
             </ul>
-            <a href="/buscar" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Cambiar búsqueda</a>
+            <a href="/buscar" class="btn btn-ver-mapa w-100"><i class="fa fa-search"></i> {{ 'instalaciones.cambiar_busqueda' | translate }}</a>
           </div>
         </div>
       </div>

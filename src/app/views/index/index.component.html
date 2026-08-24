@@ -21,19 +21,17 @@
     <div class="container">
       <div class="site-search-module-inside">
         <form (ngSubmit)="buscar()">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-8">
-                <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control input-lg"
-                       placeholder="Escribe algo..." [(ngModel)]="modeloBusqueda.nombreInstalacion">
-              </div>
-              <div class="col-md-2">
-                <button type="submit" class="btn btn-primary btn-block btn-lg"><i class="fa fa-search"></i> Buscar
-                </button>
-              </div>
-              <div class="col-md-2">
-                <a href="#" id="ads-trigger" class="btn btn-default btn-block"><i class="fa fa-plus"></i> Más</a>
-              </div>
+          <div class="row">
+            <div class="col-md-8">
+              <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control"
+                     [placeholder]="'index.buscar_placeholder' | translate" [(ngModel)]="modeloBusqueda.nombreInstalacion">
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-ver-mapa btn-buscador w-100"><i class="fa fa-search"></i> {{ 'index.buscar' | translate }}
+              </button>
+            </div>
+            <div class="col-md-2">
+              <a href="#" id="ads-trigger" class="btn btn-outline-secondary btn-buscador w-100"><i class="fa fa-plus"></i> {{ 'index.mas' | translate }}</a>
             </div>
           </div>
         </form>

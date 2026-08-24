@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-loader',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './loader.component.html',
   styleUrl: './loader.component.css',
 })

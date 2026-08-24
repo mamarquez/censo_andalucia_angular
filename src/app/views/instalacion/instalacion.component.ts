@@ -6,11 +6,12 @@ import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
 import {Instalacion} from '../../models/instalacion';
 import {LoaderComponent} from '../../layout/loader/loader.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-instalacion',
-  imports: [CommonModule, FormsModule, LoaderComponent],
+  imports: [CommonModule, FormsModule, LoaderComponent, TranslatePipe],
   templateUrl: './instalacion.component.html',
   styleUrls: ['./instalacion.component.css']
 })

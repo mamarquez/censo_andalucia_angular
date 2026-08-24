@@ -3,8 +3,10 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <ul class="horiz-nav pull-right">
-            <li><a href="{{ gestion }}" target="_self"><i class="fa fa-key"></i> Gestión</a></li>
+          <ul class="horiz-nav float-end">
+            <li><a href="javascript:void(0)" (click)="cambiarIdioma('es')" [class.fw-bold]="translateService.currentLang() === 'es'">ES</a></li>
+            <li><a href="javascript:void(0)" (click)="cambiarIdioma('en')" [class.fw-bold]="translateService.currentLang() === 'en'">EN</a></li>
+            <li><a href="{{ gestion }}" target="_self"><i class="fa fa-key"></i> {{ 'header.gestion' | translate }}</a></li>
           </ul>
         </div>
       </div>
@@ -13,16 +15,16 @@
   <div class="middle-header">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-8 col-xs-8">
-          <h1 class="logo"> <a href="/"><img src="/images/logo_es@2x.png" alt="Inventario Andaluz de Instalaciones y Equipamientos Deportivos"></a> </h1>
+        <div class="col-md-4 col-sm-8 col-8">
+          <h1 class="logo"> <a href="/"><img src="/images/logo_es@2x.png" [attr.alt]="'header.logo_alt' | translate"></a> </h1>
         </div>
-        <div class="col-md-8 col-sm-4 col-xs-4">
-          <div class="contact-info-blocks hidden-sm hidden-xs">
+        <div class="col-md-8 col-sm-4 col-4">
+          <div class="contact-info-blocks d-none d-md-block">
             <div>
-              <a href="https://www.juntadeandalucia.es/" target="_blank" rel="noopener"><img src="/images/junta.png" alt="Junta de Andalucía"></a>
+              <a href="https://www.juntadeandalucia.es/" target="_blank" rel="noopener"><img src="/images/junta.png" [attr.alt]="'header.junta_alt' | translate"></a>
             </div>
           </div>
-          <a href="#" class="visible-sm visible-xs menu-toggle"><i class="fa fa-bars"></i></a>
+          <a href="javascript:void(0)" class="menu-toggle d-lg-none" (click)="toggleMenu()"><i class="fa fa-bars"></i></a>
         </div>
       </div>
     </div>

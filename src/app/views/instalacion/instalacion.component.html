@@ -13,7 +13,7 @@
             <div class="col-md-8">
               <div class="single-property">
                 <h2 class="page-title">
-                  <span class="codigo-ieda">Código: {{ instalacion.codigo }}</span>
+                  <span class="codigo-ieda">{{ 'instalacion.codigo' | translate }}: {{ instalacion.codigo }}</span>
                   <br/>
                   {{ instalacion.nombre }}
                   <br/>
@@ -49,20 +49,20 @@
             <div class="sidebar right-sidebar col-md-4">
               <div class="agent-contact-details">
                 <h4>
-                  <i class="fa fa-map-marker"></i> Contacto
+                  <i class="fa fa-map-marker"></i> {{ 'instalacion.contacto' | translate }}
                 </h4>
 
                 <div class="flex-row">
-                  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#loc">
-                    <i class="fa fa-compass"></i> Localización
+                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loc">
+                    <i class="fa fa-compass"></i> {{ 'instalacion.localizacion' | translate }}
                   </button>
-                  <div class="pull-right">
+                  <div class="float-end">
 
                     <a id="boton_ruta" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
                        <!--
                        href="https://www.google.es/maps/@("?q="+Model.instalacion.CID_Instalaciones.CID_Instalaciones_GeoposicionXY.X+","+Model.instalacion.CID_Instalaciones.CID_Instalaciones_GeoposicionXY.Y)">
                     -->
-                        <i class="fa fa-road"></i> Como llegar
+                        <i class="fa fa-road"></i> {{ 'instalacion.como_llegar' | translate }}
                     </a>
                   </div>
                 </div>
@@ -85,7 +85,7 @@
                   }
 
                   @if (instalacion.telefonos) {
-                      <li class="list-group-item"> Teléfono/s
+                      <li class="list-group-item"> {{ 'instalacion.telefono' | translate }}
                         @for(telefono of instalacion.telefonos; track telefono.id) {
                           <span class="badge">{{telefono.numero}}</span>
                         }
@@ -93,20 +93,20 @@
                   }
 
                   @if (instalacion.fax) {
-                    <li class="list-group-item"> Fax
+                    <li class="list-group-item"> {{ 'instalacion.fax' | translate }}
                         <span class="badge">{{ instalacion.fax }}</span>
                     </li>
                   }
 
                   @if (instalacion.web) {
-                    <li class="list-group-item"> Web
+                    <li class="list-group-item"> {{ 'instalacion.web' | translate }}
                       <span class="badge">
                         <a [href]="instalacion.web" target="_blank" rel="noopener">{{ instalacion.web }}</a></span>
                     </li>
                   }
 
                   @if (instalacion.email) {
-                    <li class="list-group-item"> Correo electronico
+                    <li class="list-group-item"> {{ 'instalacion.correo_electronico' | translate }}
                       <span class="badge">
                         <a [href]="'mailto:' + instalacion.email" target="_blank" rel="noopener">{{ instalacion.email }}</a>
                       </span>
@@ -118,12 +118,12 @@
 
               <br/>
 
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#widget" style="height: 50px;width: 100%;font-size: 110%;"><i class="fa fa-code"></i> Muestra esta instalación en tu web</button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#widget" style="height: 50px;width: 100%;font-size: 110%;"><i class="fa fa-code"></i> {{ 'instalacion.mostrar_en_web' | translate }}</button>
 
               <hr>
 
                 @if (instalacion.gestor) {
-                    <h4><i class="fa fa-user"></i> Tipo de gestor</h4>
+                    <h4><i class="fa fa-user"></i> {{ 'instalacion.tipo_gestor' | translate }}</h4>
                     {{ instalacion.gestor.nombre }}
                     <ul class="carets">
                       @if (instalacion.gestor.tipoGestor) {
@@ -134,12 +134,12 @@
 
               <hr>
 
-              <h4 class="atributo1">Accesibilidad/Supresión de barreras arquitectónicas</h4>
+              <h4 class="atributo1">{{ 'instalacion.accesibilidad' | translate }}</h4>
               <div class="additional-amenities">
                 <span class="available"><i class="fa fa-check-square"></i> @_sub.nombre: @_sub.valor</span>
               </div>
 
-              <h6>Descargar: <a [href]="'/ExportarPDF/' + instalacion.id" class="btn btn-default btn-sm" target="_blank" rel="noopener"><i class="fa fa-file-text"></i> pdf</a></h6>
+              <h6>{{ 'instalacion.descargar' | translate }} <a [href]="'/ExportarPDF/' + instalacion.id" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener"><i class="fa fa-file-text"></i> {{ 'instalacion.pdf' | translate }}</a></h6>
             </div>
 
           </div>

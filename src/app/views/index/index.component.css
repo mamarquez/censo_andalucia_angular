@@ -1,0 +1,17 @@
+.btn-ver-mapa {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #005128;
+  --bs-btn-border-color: #005128;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #003d1e;
+  --bs-btn-hover-border-color: #003d1e;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #003318;
+  --bs-btn-active-border-color: #003318;
+}
+
+.btn-buscador {
+  --bs-btn-padding-y: 0.375rem;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-line-height: 1.5;
+}
