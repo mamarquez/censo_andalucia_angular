@@ -12,7 +12,7 @@
                 <i class="fa fa-caret-right icon-design"></i>
                 <i class="fa fa-th-list"></i>
               </span>1494 {{ 'instalaciones.total_instalaciones' | translate }}</h4>
-              <a href="/ExportarExcel" class="btn btn-outline-secondary btn-sm float-end"><i class="fa fa-table"></i> {{ 'instalaciones.xls' | translate }}</a>
+              <button type="button" (click)="descargarExcel()" class="btn btn-outline-secondary btn-sm float-end"><i class="fa fa-table"></i> {{ 'instalaciones.xls' | translate }}</button>
           </div>
           <h6>2910 {{ 'instalaciones.resumen_espacios' | translate }} 1305 {{ 'instalaciones.espacios_complementarios' | translate }} <a href="/busqueda-mapa" class="btn btn-ver-mapa btn-sm float-end"><i class="fa fa-map-marker"></i> {{ 'instalaciones.ver_en_mapa' | translate }}</a></h6>
 

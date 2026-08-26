@@ -2,6 +2,7 @@ import {Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef} from '@ang
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MessageService} from 'primeng/api';
 import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
 import {LoaderComponent} from '../../layout/loader/loader.component';
@@ -30,7 +31,8 @@ export class InstalacionesComponent implements OnInit {
     private censoService: CensoService,
     private router: Router,
     private route: ActivatedRoute,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private messageService: MessageService
   ) {
     register();
   }
@@ -93,5 +95,26 @@ export class InstalacionesComponent implements OnInit {
 
   buscar(): void {
     // Lógica de búsqueda
+  }
+
+  descargarExcel(): void {
+    this.censoService.exportarInstalacionesExcel(this.filtros).subscribe({
+      next: (blob: Blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const enlace = document.createElement('a');
+        enlace.href = url;
+        enlace.download = 'listado.xlsx';
+        enlace.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error('Error al exportar el listado a Excel', err);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'No se ha podido descargar el listado en Excel'
+        });
+      }
+    });
   }
 }

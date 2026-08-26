@@ -127,4 +127,11 @@ export class CensoService {
     });
   }
 
+  exportarInstalacionesExcel(filtros: Filtros = this.filtros) {
+    return this.http.get(`${this.api}/listados`, {
+      params: buildHttpParams(filtros),
+      responseType: 'blob'
+    });
+  }
+
 }
