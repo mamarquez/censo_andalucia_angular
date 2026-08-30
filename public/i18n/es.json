@@ -1,4 +1,19 @@
 {
+  "errores": {
+    "titulo": "Error",
+    "sin_conexion": "No se ha podido conectar con el servidor. Comprueba tu conexión.",
+    "peticion_invalida": "La solicitud no es válida.",
+    "no_autorizado": "No tienes permiso para realizar esta acción.",
+    "no_encontrado": "No se ha encontrado el recurso solicitado.",
+    "servidor": "El servidor ha devuelto un error. Inténtalo de nuevo más tarde.",
+    "desconocido": "Se ha producido un error inesperado.",
+    "pagina_no_encontrada": "La página que buscas no existe o ha sido movida.",
+    "volver_inicio": "Volver al inicio",
+    "volver_listado": "Volver al listado",
+    "instalacion_no_encontrada": "La instalación solicitada no existe.",
+    "instalacion_error": "No se ha podido cargar la instalación.",
+    "reintentar": "Reintentar"
+  },
   "widget": {
     "titulo_pagina": "Insertar mapa",
     "alerta_busqueda": "Utiliza algún criterio de búsqueda por favor",

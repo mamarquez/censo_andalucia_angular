@@ -1,7 +1,8 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {HttpErrorResponse} from '@angular/common/http';
 import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
 import {Instalacion} from '../../models/instalacion';
@@ -14,12 +15,18 @@ import { UbicacionComponent } from './ubicacion/ubicacion.component';
 @Component({
   standalone: true,
   selector: 'app-instalacion',
-  imports: [CommonModule, FormsModule, LoaderComponent, MapaComponent, TranslatePipe, CoordenadaComponent, UbicacionComponent],
+  imports: [CommonModule, FormsModule, RouterLink, LoaderComponent, MapaComponent, TranslatePipe, CoordenadaComponent, UbicacionComponent],
   templateUrl: './instalacion.component.html',
   styleUrls: ['./instalacion.component.css']
 })
 export class InstalacionComponent implements OnInit {
   cargando: boolean = true;
+
+  /** Se pone a true si la instalación no existe (404) o la carga falla. */
+  error: boolean = false;
+
+  /** true en concreto cuando el backend responde 404. */
+  noEncontrada: boolean = false;
 
   coordenadaX: string = '';
   coordenadaY: string = '';
@@ -43,18 +50,24 @@ export class InstalacionComponent implements OnInit {
   }
 
   cargarDatos(id: string): void {
+    this.cargando = true;
+    this.error = false;
+    this.noEncontrada = false;
+
     this.censoService.cargarInstalacion(id).subscribe({
       next: (response: ApiResponse<Instalacion>) => {
-        this.instalacion = response.data;
-
-        console.log(response.data);
-
+        this.instalacion = response.data ?? null;
+        this.error = this.instalacion === null;
+        this.noEncontrada = this.instalacion === null;
         this.cargando = false;
         this.cd.detectChanges();
       },
-      error: (err) => {
+      error: (err: HttpErrorResponse) => {
         console.error('Error al cargar la instalación', err);
+        this.error = true;
+        this.noEncontrada = err.status === 404;
         this.cargando = false;
+        this.cd.detectChanges();
       }
     });
   }

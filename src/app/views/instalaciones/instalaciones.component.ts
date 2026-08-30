@@ -23,6 +23,9 @@ export class InstalacionesComponent implements OnInit {
 
   cargando: boolean = true;
 
+  /** true si la carga del listado ha fallado. */
+  error: boolean = false;
+
   filtros: Filtros = {
     baja: false
   };
@@ -111,18 +114,21 @@ export class InstalacionesComponent implements OnInit {
   }
 
   cargarInstalaciones(): void {
+    this.cargando = true;
+    this.error = false;
+
     this.censoService.cargarInstalaciones(this.filtros).subscribe({
       next: (response: ApiResponse<any>) => {
-        this.instalaciones = response.data;
-
-        console.log(response.data);
-
+        this.instalaciones = response.data ?? [];
         this.cargando = false;
         this.cd.detectChanges();
       },
       error: (err) => {
         console.error('Error al cargar instalaciones', err);
+        this.instalaciones = [];
+        this.error = true;
         this.cargando = false;
+        this.cd.detectChanges();
       }
     });
   }

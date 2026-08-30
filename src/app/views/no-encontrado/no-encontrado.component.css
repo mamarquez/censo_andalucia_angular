@@ -1,0 +1,15 @@
+.error-404 {
+  padding: 80px 0;
+}
+
+.error-404 h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #005128;
+  margin-bottom: 0.5rem;
+}
+
+.error-404 .lead {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}

@@ -38,18 +38,13 @@ export const routes: Routes = [
     path: "instalacion/:id",
     loadComponent: () => import('./views/instalacion/instalacion.component').then(m => m.InstalacionComponent)
   },
-  /*
   {
-    // Como en el componente hicimos this.router.navigate(['/resultados-busqueda']),
-    // necesitamos esta ruta para que no falle al pulsar "Buscar".
-    // (Crea este componente cuando sigas avanzando)
-    path: 'resultados-busqueda',
-    loadComponent: () => import('./pages/resultados-busqueda/resultados-busqueda.component').then(m => m.ResultadosBusquedaComponent)
+    path: 'no-encontrado',
+    loadComponent: () => import('./views/no-encontrado/no-encontrado.component').then(m => m.NoEncontradoComponent)
   },
-  */
   {
-    // Si el usuario escribe una URL que no existe, lo mandamos a index
+    // Cualquier URL que no exista muestra la página 404.
     path: '**',
-    redirectTo: 'index'
+    loadComponent: () => import('./views/no-encontrado/no-encontrado.component').then(m => m.NoEncontradoComponent)
   }
 ];

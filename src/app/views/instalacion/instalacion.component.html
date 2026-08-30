@@ -1,6 +1,24 @@
 <app-loader [cargando]="cargando"></app-loader>
 
-@if (!cargando && instalacion) {
+@if (!cargando && error) {
+  <div class="main" role="main">
+    <div id="content" class="content full">
+      <div class="container">
+        <div class="error-404 text-center">
+          <h2><i class="fa fa-exclamation-triangle"></i> {{ noEncontrada ? '404' : '' }}</h2>
+          <p class="lead">
+            {{ (noEncontrada ? 'errores.instalacion_no_encontrada' : 'errores.instalacion_error') | translate }}
+          </p>
+          <a routerLink="/instalaciones" class="btn btn-primary">
+            <i class="fa fa-arrow-left"></i> {{ 'errores.volver_listado' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (!cargando && !error && instalacion) {
 
     @if (instalacion.nmeaLatitud && instalacion.nmeaLongitud) {
       <div class="site-showcase">

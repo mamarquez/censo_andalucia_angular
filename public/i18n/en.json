@@ -1,4 +1,19 @@
 {
+  "errores": {
+    "titulo": "Error",
+    "sin_conexion": "Could not reach the server. Check your connection.",
+    "peticion_invalida": "The request is not valid.",
+    "no_autorizado": "You don't have permission to perform this action.",
+    "no_encontrado": "The requested resource was not found.",
+    "servidor": "The server returned an error. Please try again later.",
+    "desconocido": "An unexpected error occurred.",
+    "pagina_no_encontrada": "The page you are looking for does not exist or has been moved.",
+    "volver_inicio": "Back to home",
+    "volver_listado": "Back to list",
+    "instalacion_no_encontrada": "The requested facility does not exist.",
+    "instalacion_error": "The facility could not be loaded.",
+    "reintentar": "Retry"
+  },
   "widget": {
     "titulo_pagina": "Embed map",
     "alerta_busqueda": "Please use a search criterion",
