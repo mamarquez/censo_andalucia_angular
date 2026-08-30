@@ -6,24 +6,29 @@ import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
 import {Instalacion} from '../../models/instalacion';
 import {LoaderComponent} from '../../layout/loader/loader.component';
+import {MapaComponent} from '../../shared/mapa/mapa.component';
 import {TranslatePipe} from '@ngx-translate/core';
+import { CoordenadaComponent } from './modal/coordenada.component';
+import { UbicacionComponent } from './ubicacion/ubicacion.component';
 
 @Component({
   standalone: true,
   selector: 'app-instalacion',
-  imports: [CommonModule, FormsModule, LoaderComponent, TranslatePipe],
+  imports: [CommonModule, FormsModule, LoaderComponent, MapaComponent, TranslatePipe, CoordenadaComponent, UbicacionComponent],
   templateUrl: './instalacion.component.html',
   styleUrls: ['./instalacion.component.css']
 })
 export class InstalacionComponent implements OnInit {
   cargando: boolean = true;
 
-  instalacion: Instalacion = {} as Instalacion;
+  coordenadaX: string = '';
+  coordenadaY: string = '';
+
+  instalacion: Instalacion | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private censoService: CensoService,
-    private router: Router,
     private cd: ChangeDetectorRef
   ) {
   }
@@ -52,6 +57,11 @@ export class InstalacionComponent implements OnInit {
         this.cargando = false;
       }
     });
+  }
+
+  mostrarModalCoordenadas(x: string, y: string): void {
+    this.coordenadaX = x;
+    this.coordenadaY = y;
   }
 
 }

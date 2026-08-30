@@ -1,0 +1,55 @@
+<div class="modal fade" id="widget" tabindex="-1" aria-labelledby="widgetLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="widgetLabel">
+          {{ 'instalacion.mostrar_en_web' | translate }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row g-3 align-items-end">
+          <div class="col-sm-6">
+            <label for="anchura" class="form-label">{{ 'widget.anchura' | translate }}</label>
+            <input
+              type="number"
+              id="anchura"
+              class="form-control"
+              min="100"
+              [ngModel]="anchura()"
+              (ngModelChange)="anchura.set($event)" />
+          </div>
+          <div class="col-sm-6">
+            <label for="altura" class="form-label">{{ 'widget.altura' | translate }}</label>
+            <input
+              type="number"
+              id="altura"
+              class="form-control"
+              min="100"
+              [ngModel]="altura()"
+              (ngModelChange)="altura.set($event)" />
+          </div>
+        </div>
+
+        <label for="codigoWidget" class="form-label">{{ 'widget.codigo_label' | translate }}</label>
+        <textarea
+          id="codigoWidget"
+          class="form-control font-monospace"
+          rows="4"
+          readonly
+          [value]="codigo()"></textarea>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="copiar()">
+          <i class="fa fa-copy"></i>
+          {{ copiado() ? ('widget.copiado' | translate) : ('widget.copiar' | translate) }}
+        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {{ 'widget.cerrar' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@
 */
 /*  CSS definations for Real Spaces  */
 
+/* La paleta corporativa (verde de la Junta) y los tokens de botón Bootstrap 5
+   están centralizados en public/css/color.css. */
 
 swiper-container {
   width: 100%;
@@ -621,12 +623,6 @@ label {
   border-radius:3px;
 }
 
-.btn-default {
-  border-width: 1px;
-  box-shadow: none;
-  text-shadow: none;
-}
-
 .btn:hover, .btn:active, .btn:focus {
   opacity: .9
 }
@@ -864,14 +860,6 @@ body.boxed .body {
 
 .horiz-nav a {
   text-decoration: none;
-}
-
-.boxed .horiz-nav.pull-left li:first-child a {
-  border-left: 0;
-}
-
-.boxed .horiz-nav.pull-right li:last-child a {
-  border-right: 0;
 }
 
 .contact-info-blocks {

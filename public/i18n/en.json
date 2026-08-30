@@ -15,7 +15,10 @@
     "deporte_todos": "All",
     "anchura": "Width (pixels)",
     "altura": "Height (pixels)",
-    "codigo_label": "Copy the following code into your website to embed the widget."
+    "codigo_label": "Copy the following code into your website to embed the widget.",
+    "copiar": "Copy code",
+    "copiado": "Copied!",
+    "cerrar": "Close"
   },
   "menu": {
     "entrada": "Home",

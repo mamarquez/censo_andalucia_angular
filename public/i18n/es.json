@@ -15,7 +15,10 @@
     "deporte_todos": "Todos",
     "anchura": "Anchura (pixeles)",
     "altura": "Altura (pixeles)",
-    "codigo_label": "Copiar el siguiente código en tu web para insertar el widget."
+    "codigo_label": "Copiar el siguiente código en tu web para insertar el widget.",
+    "copiar": "Copiar código",
+    "copiado": "¡Copiado!",
+    "cerrar": "Cerrar"
   },
   "menu": {
     "entrada": "Entrada",

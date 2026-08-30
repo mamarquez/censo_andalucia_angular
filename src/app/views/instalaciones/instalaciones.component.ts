@@ -1,7 +1,7 @@
 import {Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, ChangeDetectorRef} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {MessageService} from 'primeng/api';
 import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
@@ -14,7 +14,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 @Component({
   standalone: true,
   selector: 'app-instalaciones',
-  imports: [CommonModule, FormsModule, LoaderComponent, TranslatePipe],
+  imports: [CommonModule, FormsModule, LoaderComponent, TranslatePipe, RouterLink],
   templateUrl: './instalaciones.component.html',
   styleUrls: ['./instalaciones.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

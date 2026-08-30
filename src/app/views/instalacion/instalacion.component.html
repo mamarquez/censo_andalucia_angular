@@ -1,10 +1,22 @@
 <app-loader [cargando]="cargando"></app-loader>
 
-@if (!cargando) {
+@if (!cargando && instalacion) {
 
-    <div class="site-showcase">
-        <div class="clearfix map-single-page" id="gmap"></div>
-    </div>
+    @if (instalacion.nmeaLatitud && instalacion.nmeaLongitud) {
+      <div class="site-showcase">
+        <app-mapa
+          class="map-single-page"
+          [lat]="instalacion.xy_x"
+          [lng]="instalacion.xy_y"
+          [titulo]="instalacion.nombre">
+        </app-mapa>
+      </div>
+
+      <app-modal-coordenada
+        [x]="coordenadaX" 
+        [y]="coordenadaY">
+      </app-modal-coordenada>
+    }
 
     <div class="main" role="main">
       <div id="content" class="content full">
@@ -15,13 +27,13 @@
                 <h2 class="page-title">
                   <span class="codigo-ieda">{{ 'instalacion.codigo' | translate }}: {{ instalacion.codigo }}</span>
                   <br/>
-                  {{ instalacion.nombre }}
+                    {{ instalacion.nombre }}
                   <br/>
                   @if (instalacion.municipio) {
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     <span class="location">{{ instalacion.municipio.nombre }}
                       @if (instalacion.provincia) {
-                      ({{ instalacion.provincia.nombre }})
+                        ({{ instalacion.provincia.nombre }})
                       }
                     </span>
                   }
@@ -38,16 +50,20 @@
                 </h4>
 
                 <div class="flex-row">
-                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#loc">
+                  <button 
+                    type="button" 
+                    class="btn btn-primary btn-sm" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#loc" 
+                    (click)="mostrarModalCoordenadas(instalacion.xy_x, instalacion.xy_y)">
                     <i class="fa fa-compass"></i> {{ 'instalacion.localizacion' | translate }}
                   </button>
+
                   <div class="float-end">
 
-                    <a id="boton_ruta" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
-                       <!--
-                       href="https://www.google.es/maps/@("?q="+Model.instalacion.CID_Instalaciones.CID_Instalaciones_GeoposicionXY.X+","+Model.instalacion.CID_Instalaciones.CID_Instalaciones_GeoposicionXY.Y)">
-                    -->
-                        <i class="fa fa-road"></i> {{ 'instalacion.como_llegar' | translate }}
+                    <a id="boton_ruta" class="btn btn-primary btn-sm" target="_blank" rel="noopener"
+                      [href]="'https://www.google.es/maps/?q=' + instalacion.xy_x + ',' + instalacion.xy_y">
+                      <i class="fa fa-road"></i> {{ 'instalacion.como_llegar' | translate }}
                     </a>
                   </div>
                 </div>
@@ -103,8 +119,11 @@
 
               <br/>
 
-                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#widget" style="height: 50px;width: 100%;font-size: 110%;"><i class="fa fa-code"></i> {{ 'instalacion.mostrar_en_web' | translate }}</button>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#widget">
+                  <i class="fa fa-code"></i> {{ 'instalacion.mostrar_en_web' | translate }}
+                </button>
 
+                <app-modal-ubicacion [id]="instalacion.id.toString()"></app-modal-ubicacion>
               <hr>
 
                 @if (instalacion.gestor) {
