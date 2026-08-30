@@ -11,11 +11,22 @@ import {MapaComponent} from '../../shared/mapa/mapa.component';
 import {TranslatePipe} from '@ngx-translate/core';
 import { CoordenadaComponent } from './modal/coordenada.component';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
+import { GaleroaInstalacionComponent } from './galeria/galeria.component';
 
 @Component({
   standalone: true,
   selector: 'app-instalacion',
-  imports: [CommonModule, FormsModule, RouterLink, LoaderComponent, MapaComponent, TranslatePipe, CoordenadaComponent, UbicacionComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    LoaderComponent,
+    MapaComponent,
+    TranslatePipe,
+    CoordenadaComponent,
+    UbicacionComponent,
+    GaleroaInstalacionComponent
+  ],
   templateUrl: './instalacion.component.html',
   styleUrls: ['./instalacion.component.css']
 })

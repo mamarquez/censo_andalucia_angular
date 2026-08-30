@@ -165,6 +165,15 @@
             </div>
 
           </div>
+
+          <!-- Galeria de imagenes -->
+          @if (instalacion) {
+            <app-instalacion-galeria
+            [idInstalacion]="instalacion.id"
+            ></app-instalacion-galeria>
+          }
+
+
         </div>
       </div>
     </div>

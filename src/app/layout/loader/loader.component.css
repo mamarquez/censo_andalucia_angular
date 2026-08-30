@@ -1,0 +1,43 @@
+/* Overlay de carga a pantalla completa */
+.overlay-carga {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(2px);
+}
+
+/* Anillo giratorio con el verde corporativo */
+.spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid rgba(0, 81, 40, 0.15);
+  border-top-color: #005128;
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+.texto-carga {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #005128;
+  letter-spacing: 0.02em;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2s;
+  }
+}
