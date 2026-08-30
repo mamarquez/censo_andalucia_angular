@@ -40,7 +40,42 @@
   "index": {
     "buscar_placeholder": "Type something...",
     "buscar": "Search",
-    "mas": "More"
+    "mas": "More",
+    "menos": "Less",
+    "todos": "All",
+    "provincia": "Province",
+    "municipio": "Municipality",
+    "clase_instalacion": "Facility class",
+    "deporte": "Sport",
+    "nivel_dotacion": "Provision level"
+  },
+  "buscar": {
+    "titulo_pagina": "Advanced search",
+    "titulo": "Advanced search",
+    "nombre": "Facility name",
+    "provincia": "Province",
+    "zona_deportiva": "Sports zone",
+    "municipio": "Municipality",
+    "distrito": "District",
+    "clase_instalacion": "Facility class",
+    "deporte": "Sport",
+    "modalidad": "Modality",
+    "tipo_espacio": "Space type",
+    "espacio_abierto": "Open space",
+    "recinto_cerrado": "Enclosed facility",
+    "tipo_gestor": "Manager type",
+    "propiedad_publica": "Public ownership",
+    "propiedad_privada": "Private ownership",
+    "nivel_dotacion": "Provision level",
+    "red_basica": "Basic network",
+    "red_complementaria": "Complementary network",
+    "red_especial": "Special network",
+    "todos": "All",
+    "todas": "All",
+    "cualquiera": "Any",
+    "buscar": "Search",
+    "limpiar": "Clear search",
+    "proximamente": "Coming soon"
   },
   "planes_locales": {
     "titulo_pagina": "Local Plans"

@@ -11,6 +11,10 @@ export const routes: Routes = [
     loadComponent: () => import('./views/index/index.component').then(m => m.InicioComponent)
   },
   {
+    path: 'buscar',
+    loadComponent: () => import('./views/buscar/buscar.component').then(m => m.BuscarComponent)
+  },
+  {
     path: "informacion-legal",
     loadComponent: () => import('./views/informacion-legal/informacion-legal.component').then(m => m.InformacionLegalComponent)
   },

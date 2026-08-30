@@ -5,7 +5,7 @@
         <nav class="navigation">
           <ul class="sf-menu">
             <li><a routerLink="/index" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.entrada' | translate }}</a></li>
-            <li><a href="" (click)="cerrarMenu()">{{ 'menu.busqueda_avanzada' | translate }}</a></li>
+            <li><a routerLink="/buscar" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.busqueda_avanzada' | translate }}</a></li>
             <li><a href="" (click)="cerrarMenu()">{{ 'menu.mapa_instalaciones' | translate }}</a></li>
             <li><a routerLink="/acerca-de-los-datos-del-censo" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.acerca_inventario' | translate }}</a></li>
             <li><a routerLink="/obtener-widget" routerLinkActive="current_menu_item" (click)="cerrarMenu()">{{ 'menu.insertar_mapa' | translate }}</a></li>

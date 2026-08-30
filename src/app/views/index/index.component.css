@@ -15,3 +15,90 @@
   --bs-btn-font-size: 1rem;
   --bs-btn-line-height: 1.5;
 }
+
+/* --- Máquina de búsqueda de portada (efecto deslizante sobre el carrusel) --- */
+
+.site-showcase {
+  position: relative;
+  z-index: 4;
+}
+
+/* El panel cuelga por debajo del carrusel: solo asoma la primera fila. */
+.site-search-module {
+  position: absolute;
+  z-index: 8;
+  left: 0;
+  width: 100%;
+  bottom: -107px;
+  transition: bottom 0.35s ease;
+}
+
+/* Con "+ Más" desplegado el panel sube y deja ver la fila de filtros. */
+.site-search-module.avanzada {
+  bottom: -15px;
+}
+
+.site-search-module-inside {
+  padding: 15px 15px 0;
+  background: #f8f8f8;
+  border-top: 3px solid rgba(0, 0, 0, 0.8);
+  border-radius: 15px 15px 0 0;
+}
+
+.site-search-module-inside .row + .row {
+  margin-top: 10px;
+}
+
+.custom-col label {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Máscara sobre el slider: se atenúa al abrir la búsqueda avanzada. */
+.slider-mask {
+  transition: opacity 0.35s ease;
+}
+
+.slider-mask.atenuado {
+  opacity: 0.3;
+}
+
+/* Animaciones nativas de Angular 21 (animate.enter / animate.leave). */
+.row-avanzada.panel-enter {
+  animation: panel-abrir 0.35s ease both;
+}
+
+.row-avanzada.panel-leave {
+  animation: panel-abrir 0.3s ease reverse both;
+}
+
+@keyframes panel-abrir {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* En pantallas pequeñas el panel deja de flotar y "+ Más" se oculta. */
+@media (max-width: 767.98px) {
+  .site-search-module,
+  .site-search-module.avanzada {
+    position: relative;
+    bottom: auto;
+    margin-top: 30px;
+  }
+
+  .site-search-module-inside {
+    padding-bottom: 30px;
+  }
+
+  #ads-trigger {
+    display: none;
+  }
+}

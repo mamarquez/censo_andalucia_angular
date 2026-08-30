@@ -68,11 +68,45 @@ export class InstalacionesComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    const nombre = this.route.snapshot.queryParamMap.get('nombre');
+    const params = this.route.snapshot.queryParamMap;
+
+    const nombre = params.get('nombre');
     if (nombre) {
       this.filtros.nombre = nombre;
       this.modeloBusqueda.nombreInstalacion = nombre;
     }
+
+    const provincia = params.get('provincia');
+    if (provincia) {
+      // El backend (FiltroInstalacionRequest.provincia) espera el id numérico.
+      this.filtros.provincia = Number(provincia);
+      this.modeloBusqueda.provincia = provincia;
+    }
+
+    const municipio = params.get('municipio');
+    if (municipio) {
+      this.filtros.municipio = Number(municipio);
+      this.modeloBusqueda.municipio = municipio;
+    }
+
+    const deporte = params.get('deporte');
+    if (deporte) {
+      this.filtros.deporte = Number(deporte);
+      this.modeloBusqueda.deporte = deporte;
+    }
+
+    const claseInstalacion = params.get('claseInstalacion');
+    if (claseInstalacion) {
+      this.filtros.claseInstalacion = claseInstalacion;
+      this.modeloBusqueda.claseInstalacion = claseInstalacion;
+    }
+
+    const nivelDotacion = params.get('nivelDotacion');
+    if (nivelDotacion) {
+      this.filtros.nivelDotacion = Number(nivelDotacion);
+      this.modeloBusqueda.nivelDotacion = nivelDotacion;
+    }
+
     this.cargarInstalaciones();
   }
 

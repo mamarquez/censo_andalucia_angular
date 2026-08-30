@@ -40,7 +40,42 @@
   "index": {
     "buscar_placeholder": "Escribe algo...",
     "buscar": "Buscar",
-    "mas": "Más"
+    "mas": "Más",
+    "menos": "Menos",
+    "todos": "Todos",
+    "provincia": "Provincia",
+    "municipio": "Municipio",
+    "clase_instalacion": "Clase de instalación",
+    "deporte": "Deporte",
+    "nivel_dotacion": "Nivel de dotación"
+  },
+  "buscar": {
+    "titulo_pagina": "Búsqueda avanzada",
+    "titulo": "Búsqueda avanzada",
+    "nombre": "Nombre de la instalación",
+    "provincia": "Provincia",
+    "zona_deportiva": "Zona deportiva",
+    "municipio": "Municipio",
+    "distrito": "Distrito",
+    "clase_instalacion": "Clase de instalación",
+    "deporte": "Deporte",
+    "modalidad": "Modalidad",
+    "tipo_espacio": "Tipo de espacio",
+    "espacio_abierto": "Espacio abierto",
+    "recinto_cerrado": "Recinto cerrado",
+    "tipo_gestor": "Tipo de gestor",
+    "propiedad_publica": "Propiedad pública",
+    "propiedad_privada": "Propiedad privada",
+    "nivel_dotacion": "Nivel de dotación",
+    "red_basica": "Red básica",
+    "red_complementaria": "Red complementaria",
+    "red_especial": "Red especial",
+    "todos": "Todos",
+    "todas": "Todas",
+    "cualquiera": "Cualquiera",
+    "buscar": "Buscar",
+    "limpiar": "Limpiar búsqueda",
+    "proximamente": "Disponible próximamente"
   },
   "planes_locales": {
     "titulo_pagina": "Planes Locales"

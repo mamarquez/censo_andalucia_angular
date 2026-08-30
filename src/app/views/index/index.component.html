@@ -1,5 +1,5 @@
 <div class="site-showcase">
-  <div class="slider-mask overlay-transparent"></div>
+  <div class="slider-mask overlay-transparent" [class.atenuado]="busquedaAvanzada"></div>
   <!-- Start Hero Slider -->
   <swiper-container
     class="hero-slider"
@@ -17,7 +17,7 @@
   </swiper-container>
   <!-- End Hero Slider -->
 
-  <div class="site-search-module">
+  <div class="site-search-module" [class.avanzada]="busquedaAvanzada">
     <div class="container">
       <div class="site-search-module-inside">
         <form (ngSubmit)="buscar()">
@@ -31,9 +31,65 @@
               </button>
             </div>
             <div class="col-md-2">
-              <a href="#" id="ads-trigger" class="btn btn-outline-secondary btn-buscador w-100"><i class="fa fa-plus"></i> {{ 'index.mas' | translate }}</a>
+              <button type="button" id="ads-trigger" class="btn btn-outline-secondary btn-buscador w-100"
+                      [class.advanced]="busquedaAvanzada" (click)="alternarAvanzada()">
+                <i class="fa" [class.fa-plus]="!busquedaAvanzada" [class.fa-minus]="busquedaAvanzada"></i>
+                {{ (busquedaAvanzada ? 'index.menos' : 'index.mas') | translate }}
+              </button>
             </div>
           </div>
+
+          @if (busquedaAvanzada) {
+            <div class="row row-avanzada d-none d-md-flex"
+                 animate.enter="panel-enter"
+                 animate.leave="panel-leave">
+              <div class="col-md custom-col">
+                <app-select
+                  idControl="provincia"
+                  name="provincia"
+                  [opciones]="provincias"
+                  [etiqueta]="'index.provincia' | translate"
+                  [(ngModel)]="modeloBusqueda.provincia"
+                  (cambio)="onProvinciaChange($event)">
+                </app-select>
+              </div>
+              <div class="col-md custom-col">
+                <app-select
+                  idControl="municipio"
+                  name="municipio"
+                  [opciones]="municipios"
+                  [etiqueta]="'index.municipio' | translate"
+                  [deshabilitado]="!modeloBusqueda.provincia || cargandoMunicipios"
+                  [(ngModel)]="modeloBusqueda.municipio">
+                </app-select>
+              </div>
+              <div class="col-md custom-col">
+                <label for="claseInstalacion">{{ 'index.clase_instalacion' | translate }}</label>
+                <select id="claseInstalacion" name="claseInstalacion" class="form-control"
+                        [(ngModel)]="modeloBusqueda.claseInstalacion">
+                  <option value="">{{ 'index.todos' | translate }}</option>
+                </select>
+              </div>
+              <div class="col-md custom-col">
+                <app-select
+                  idControl="deporte"
+                  name="deporte"
+                  [opciones]="deportes"
+                  [etiqueta]="'index.deporte' | translate"
+                  [(ngModel)]="modeloBusqueda.deporte">
+                </app-select>
+              </div>
+              <div class="col-md custom-col">
+                <app-select
+                  idControl="nivelDotacion"
+                  name="nivelDotacion"
+                  [opciones]="nivelDotacionOpciones"
+                  [etiqueta]="'index.nivel_dotacion' | translate"
+                  [(ngModel)]="modeloBusqueda.nivelDotacion">
+                </app-select>
+              </div>
+            </div>
+            }
         </form>
       </div>
     </div>

@@ -20,28 +20,13 @@
                   @if (instalacion.municipio) {
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                     <span class="location">{{ instalacion.municipio.nombre }}
-                    @if (instalacion.provincia) {
-                        ({{ instalacion.provincia.nombre }})
-                    }
+                      @if (instalacion.provincia) {
+                      ({{ instalacion.provincia.nombre }})
+                      }
                     </span>
                   }
                 </h2>
-
-                <!--
-                @if (Model.tipos_instalacion != null)
-                {
-                  foreach (BBDD_Censo.Database.CID_Instalaciones_Clases_Idioma _tipo in Model.tipos_instalacion)
-                  {
-                    <div class="tipo @_tipo.ID_ClaseInstalacion">
-                      <strong><i class="fa fa-flag"></i></strong><span>@_tipo.Descripcion</span>
-                    </div>
-                  }
-                }
-                -->
-
-                <hr>
-
-
+                <hr />
               </div>
             </div>
 

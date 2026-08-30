@@ -6,6 +6,7 @@ import { Provincia } from '../models/provincia';
 import { buildHttpParams } from '../utils/params.util';
 import { ApiResponse } from '../models/apiresponse';
 import {Cerramiento} from '../models/cerramiento';
+import {NivelDotacion} from '../models/niveldotacion';
 import {Configuracion} from '../models/configuracion';
 import {Municipio} from '../models/municipio';
 import {ActividadDeportiva} from '../models/actividaddeportiva';
@@ -91,9 +92,15 @@ export class CensoService {
     });
   }
 
-  cargarActividadesDeportivas() {
+  cargarActividadesDeportivas(filtros: Filtros = this.filtros) {
     return this.http.get<ApiResponse<ActividadDeportiva[]>>(`${this.api}/actividadesdeportivas`, {
-      params: buildHttpParams(this.filtros), headers: this.headers
+      params: buildHttpParams(filtros), headers: this.headers
+    });
+  }
+
+  cargarNivelesDotacion(filtros: Filtros = this.filtros) {
+    return this.http.get<ApiResponse<NivelDotacion[]>>(`${this.api}/nivelesdotaciones`, {
+      params: buildHttpParams(filtros), headers: this.headers
     });
   }
 

@@ -1,0 +1,293 @@
+<div class="site-showcase">
+  <!-- Start Page Header -->
+  <div class="parallax page-header" style="background-image:url('/images/bg.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ 'buscar.titulo' | translate }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Page Header -->
+</div>
+
+<div class="main" role="main">
+  <div id="content" class="content full">
+    <div class="container">
+      <div class="page">
+        <form class="form-busqueda" (ngSubmit)="buscar()">
+          <div class="padding-as25 margin-30 lgray-bg">
+            <div class="row">
+              <div class="col-12 mb-3">
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <label for="nombre">{{ 'buscar.nombre' | translate }}</label>
+                    <input
+                      type="text"
+                      id="nombre"
+                      name="nombre"
+                      class="form-control form-control-lg"
+                      [(ngModel)]="modelo.nombre" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3 mb-3">
+                    <app-select
+                      idControl="provincia"
+                      name="provincia"
+                      [opciones]="provincias"
+                      [etiqueta]="'buscar.provincia' | translate"
+                      [placeholderKey]="'buscar.todas'"
+                      [(ngModel)]="modelo.provincia"
+                      (cambio)="onProvinciaChange($event)">
+                    </app-select>
+                  </div>
+
+                  <div class="col-md-3 mb-3">
+                    <app-select
+                      idControl="municipio"
+                      name="municipio"
+                      [opciones]="municipios"
+                      [etiqueta]="'buscar.municipio' | translate"
+                      [deshabilitado]="!modelo.provincia || cargandoMunicipios"
+                      [(ngModel)]="modelo.municipio">
+                    </app-select>
+                  </div>
+
+                  <div class="col-md-3 mb-3">
+                    <app-select
+                      idControl="deporte"
+                      name="deporte"
+                      [opciones]="deportes"
+                      [etiqueta]="'buscar.deporte' | translate"
+                      [(ngModel)]="modelo.deporte">
+                    </app-select>
+                  </div>
+
+                  <div class="col-md-3 mb-3">
+                    <app-select
+                      idControl="nivelDotacion"
+                      name="nivelDotacion"
+                      [opciones]="nivelDotacion"
+                      [etiqueta]="'buscar.nivel_dotacion' | translate"
+                      [(ngModel)]="modelo.nivelDotacion">
+                    </app-select>
+                  </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row acciones">
+          <div class="col-12">
+            <button type="submit" class="btn btn-ver-mapa btn-lg">
+              <i class="fa fa-search"></i> {{ 'buscar.buscar' | translate }}
+            </button>
+            <button type="button" class="btn btn-link" (click)="limpiar()">
+              {{ 'buscar.limpiar' | translate }}
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+<div class="site-search-page">
+  <div class="container">
+    <h1 class="titulo-busqueda">{{ 'buscar.titulo' | translate }}</h1>
+
+    <div class="padding-as25 margin-30 lgray-bg">
+
+    <form class="form-busqueda" (ngSubmit)="buscar()">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <label for="nombre">{{ 'buscar.nombre' | translate }}</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            class="form-control form-control-lg"
+            [(ngModel)]="modelo.nombre" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <app-select
+            idControl="provincia"
+            name="provincia"
+            [opciones]="provincias"
+            [etiqueta]="'buscar.provincia' | translate"
+            [placeholderKey]="'buscar.todas'"
+            [(ngModel)]="modelo.provincia"
+            (cambio)="onProvinciaChange($event)">
+          </app-select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <app-select
+            idControl="zonaDeportiva"
+            name="zonaDeportiva"
+            [opciones]="[]"
+            [etiqueta]="'buscar.zona_deportiva' | translate"
+            [deshabilitado]="true"
+            [titulo]="'buscar.proximamente' | translate"
+            [(ngModel)]="modelo.zonaDeportiva">
+          </app-select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <app-select
+            idControl="municipio"
+            name="municipio"
+            [opciones]="municipios"
+            [etiqueta]="'buscar.municipio' | translate"
+            [deshabilitado]="!modelo.provincia || cargandoMunicipios"
+            [(ngModel)]="modelo.municipio">
+          </app-select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <app-select
+            idControl="distrito"
+            name="distrito"
+            [opciones]="[]"
+            [etiqueta]="'buscar.distrito' | translate"
+            [deshabilitado]="true"
+            [titulo]="'buscar.proximamente' | translate"
+            [(ngModel)]="modelo.distrito">
+          </app-select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <app-select
+            idControl="claseInstalacion"
+            name="claseInstalacion"
+            [opciones]="[]"
+            [etiqueta]="'buscar.clase_instalacion' | translate"
+            [deshabilitado]="true"
+            [titulo]="'buscar.proximamente' | translate"
+            [(ngModel)]="modelo.claseInstalacion">
+          </app-select>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <app-select
+            idControl="deporte"
+            name="deporte"
+            [opciones]="deportes"
+            [etiqueta]="'buscar.deporte' | translate"
+            [(ngModel)]="modelo.deporte">
+          </app-select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <app-select
+            idControl="modalidad"
+            name="modalidad"
+            [opciones]="[]"
+            [etiqueta]="'buscar.modalidad' | translate"
+            [deshabilitado]="true"
+            [titulo]="'buscar.proximamente' | translate"
+            [(ngModel)]="modelo.modalidad">
+          </app-select>
+        </div>
+
+        </div>
+
+        <div class="row">
+
+        <div class="col-md-4 mb-3">
+          <span class="d-block form-label-group">{{ 'buscar.tipo_espacio' | translate }}</span>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="tipoEspacio"
+              id="tipoEspacioAbierto"
+              value="abierto"
+              disabled
+              [(ngModel)]="modelo.tipoEspacio" />
+            <label class="form-check-label" for="tipoEspacioAbierto">
+              {{ 'buscar.espacio_abierto' | translate }}
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="tipoEspacio"
+              id="tipoEspacioCerrado"
+              value="cerrado"
+              disabled
+              [(ngModel)]="modelo.tipoEspacio" />
+            <label class="form-check-label" for="tipoEspacioCerrado">
+              {{ 'buscar.recinto_cerrado' | translate }}
+            </label>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <span class="d-block form-label-group">{{ 'buscar.tipo_gestor' | translate }}</span>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="tipoGestor"
+              id="tipoGestorPublica"
+              value="publica"
+              disabled
+              [(ngModel)]="modelo.tipoGestor" />
+            <label class="form-check-label" for="tipoGestorPublica">
+              {{ 'buscar.propiedad_publica' | translate }}
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="tipoGestor"
+              id="tipoGestorPrivada"
+              value="privada"
+              disabled
+              [(ngModel)]="modelo.tipoGestor" />
+            <label class="form-check-label" for="tipoGestorPrivada">
+              {{ 'buscar.propiedad_privada' | translate }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="nivelDotacion">{{ 'buscar.nivel_dotacion' | translate }}</label>
+          <select
+            id="nivelDotacion"
+            name="nivelDotacion"
+            class="form-control"
+            [(ngModel)]="modelo.nivelDotacion">
+            <option value="">{{ 'buscar.todos' | translate }}</option>
+            <option value="1">{{ 'buscar.red_basica' | translate }}</option>
+            <option value="2">{{ 'buscar.red_complementaria' | translate }}</option>
+            <option value="3">{{ 'buscar.red_especial' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      
+    </form>
+  </div>
+</div>
+-->

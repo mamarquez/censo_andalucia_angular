@@ -1,9 +1,7 @@
-import { ChangeDetectorRef, Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { register } from 'swiper/element/bundle';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { CensoService } from '../../services/censoService.service';
@@ -11,54 +9,48 @@ import { ApiResponse } from '../../models/apiresponse';
 import { Provincia } from '../../models/provincia';
 import { Municipio } from '../../models/municipio';
 import { ActividadDeportiva } from '../../models/actividaddeportiva';
-import { NivelDotacion } from '../../models/niveldotacion';
 import { Filtros } from '../../filtros/filtros';
 import { OpcionSelect, SelectComponent } from '../../shared/select/select.component';
 
+/**
+ * Página de búsqueda avanzada de instalaciones.
+ *
+ * <p>Replica el formulario del censo original (juntadeandalucia.es/deporte/Censo_Andalucia/buscar):
+ * Nombre, Provincia, Zona deportiva, Municipio, Distrito, Clase de instalación, Deporte,
+ * Modalidad, Tipo de espacio, Tipo de gestor y Nivel de dotación.</p>
+ *
+ * <p>Los campos con datos en el backend (Provincia, Municipio, Deporte) se cargan por API;
+ * el resto se muestran deshabilitados hasta que exista endpoint. Al enviar navega a
+ * <code>/instalaciones</code> con los criterios como query params.</p>
+ *
+ * @author Duncan
+ * @version 1.0.0
+ */
 @Component({
   standalone: true,
-  selector: 'app-inicio',
+  selector: 'app-buscar',
   imports: [CommonModule, FormsModule, TranslatePipe, SelectComponent],
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  templateUrl: './buscar.component.html',
+  styleUrls: ['./buscar.component.css']
 })
-export class InicioComponent implements OnInit {
+export class BuscarComponent implements OnInit {
 
   constructor(
     private router: Router,
     private censoService: CensoService,
     private cd: ChangeDetectorRef
-  ) {
-    register();
-  }
+  ) {}
 
-  /** Panel de filtros avanzados desplegado (botón "+ Más"). */
-  busquedaAvanzada = false;
-
-  /** Opciones para el <app-select> de provincia. */
+  /** Opciones de los selects con datos reales del backend. */
   provincias: OpcionSelect[] = [];
-
-  /** Opciones para el <app-select> de municipio; dependen de la provincia elegida. */
   municipios: OpcionSelect[] = [];
-
-  /** Opciones para el <app-select> de deporte. */
   deportes: OpcionSelect[] = [];
+  nivelDotacion: OpcionSelect[] = [];
 
-  /** Opciones para el <app-select> de nivel de dotación. */
-  nivelDotacionOpciones: OpcionSelect[] = [];
-
-  /** Evita permitir elegir municipio mientras no haya provincia o se estén cargando. */
   cargandoMunicipios = false;
 
-  modeloBusqueda = {
-    nombreInstalacion: '',
-    provincia: '',
-    municipio: '',
-    claseInstalacion: '',
-    deporte: '',
-    nivelDotacion: ''
-  };
+  /** Modelo del formulario (strings: los <select> nativos operan con strings). */
+  modelo = this.modeloVacio();
 
   ngOnInit(): void {
     this.censoService.cargarProvincias().subscribe({
@@ -78,24 +70,19 @@ export class InicioComponent implements OnInit {
     });
 
     this.censoService.cargarNivelesDotacion({ activo: true }).subscribe({
-      next: (respuesta: ApiResponse<NivelDotacion[]>) => {
-        this.nivelDotacionOpciones = respuesta.data.map(n => ({ valor: n.id, etiqueta: n.nombre }));
+      next: (respuesta: ApiResponse<Filtros[]>) => {
+        this.nivelDotacion = respuesta.data.map(n => ({ valor: n.id!, etiqueta: n.nombre! }));
         this.cd.detectChanges();
       },
       error: err => console.error('Error al cargar niveles de dotación', err)
     });
   }
 
-  alternarAvanzada(): void {
-    this.busquedaAvanzada = !this.busquedaAvanzada;
-  }
-
   /**
-   * Reacciona al cambio de provincia: limpia el municipio seleccionado y recarga
-   * la lista de municipios de esa provincia.
+   * Al cambiar de provincia: limpia el municipio y recarga los municipios de esa provincia.
    */
   onProvinciaChange(idProvincia: string | number | null): void {
-    this.modeloBusqueda.municipio = '';
+    this.modelo.municipio = '';
     this.municipios = [];
 
     if (idProvincia === null || idProvincia === '') {
@@ -120,17 +107,42 @@ export class InicioComponent implements OnInit {
   }
 
   buscar(): void {
-    const m = this.modeloBusqueda;
+    const m = this.modelo;
     this.router.navigate(['/instalaciones'], {
       queryParams: {
-        nombre: m.nombreInstalacion.trim() || null,
-        // Los <select> devuelven string; el backend espera el id numérico de provincia/municipio.
+        nombre: m.nombre.trim() || null,
         provincia: m.provincia ? Number(m.provincia) : null,
         municipio: m.municipio ? Number(m.municipio) : null,
-        claseInstalacion: m.claseInstalacion || null,
         deporte: m.deporte || null,
-        nivelDotacion: m.nivelDotacion || null
+        nivelDotacion: m.nivelDotacion || null,
+        zonaDeportiva: m.zonaDeportiva || null,
+        distrito: m.distrito || null,
+        claseInstalacion: m.claseInstalacion || null,
+        modalidad: m.modalidad || null,
+        tipoEspacio: m.tipoEspacio || null,
+        tipoGestor: m.tipoGestor || null
       }
     });
+  }
+
+  limpiar(): void {
+    this.modelo = this.modeloVacio();
+    this.municipios = [];
+  }
+
+  private modeloVacio() {
+    return {
+      nombre: '',
+      provincia: '',
+      zonaDeportiva: '',
+      municipio: '',
+      distrito: '',
+      claseInstalacion: '',
+      deporte: '',
+      modalidad: '',
+      tipoEspacio: '',
+      tipoGestor: '',
+      nivelDotacion: ''
+    };
   }
 }
