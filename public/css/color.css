@@ -60,6 +60,13 @@
   background-color: #005128 !important;
 }
 
+/* Barra superior (idioma ES/EN + acceso a Gestión): sin fondo propio, el
+   texto blanco (.horiz-nav > li > a, ver styles.css) quedaba invisible
+   sobre el fondo blanco del body. */
+.top-header {
+  background-color: #005128;
+}
+
 .accent-color,
 .location > i,
 .property-listing h3 a {

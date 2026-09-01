@@ -12,6 +12,7 @@ import {Municipio} from '../models/municipio';
 import {ActividadDeportiva} from '../models/actividaddeportiva';
 import {Filtros} from '../filtros/filtros';
 import {Instalacion} from '../models/instalacion';
+import { InstalacionImagen } from '../models/instalacion-imagen';
 
 @Injectable({
   providedIn: 'root'
@@ -130,6 +131,17 @@ export class CensoService {
    */
   cargarInstalacion(id: string) {
     return this.http.get<ApiResponse<Instalacion>>(`${this.api}/instalaciones/${id}`, {
+      headers: this.headers
+    });
+  }
+
+  /**
+   * Obtener lista de imagenes de instalacion
+   * @param id Id de la instalacion
+   * @returns 
+   */
+  cargarImagen(id: number) {
+    return this.http.get<ApiResponse<InstalacionImagen[]>>(`${this.api}/instalacionesgaleria/${id}`, {
       headers: this.headers
     });
   }

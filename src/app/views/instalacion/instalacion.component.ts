@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
@@ -12,6 +12,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 import { CoordenadaComponent } from './modal/coordenada.component';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { GaleroaInstalacionComponent } from './galeria/galeria.component';
+import { InstalacionImagen } from '../../models/instalacion-imagen';
 
 @Component({
   standalone: true,
@@ -31,6 +32,11 @@ import { GaleroaInstalacionComponent } from './galeria/galeria.component';
   styleUrls: ['./instalacion.component.css']
 })
 export class InstalacionComponent implements OnInit {
+
+  private readonly route = inject(ActivatedRoute);
+  private readonly censoService = inject(CensoService);
+  private readonly cd = inject(ChangeDetectorRef);
+
   cargando: boolean = true;
 
   /** Se pone a true si la instalación no existe (404) o la carga falla. */
@@ -43,14 +49,7 @@ export class InstalacionComponent implements OnInit {
   coordenadaY: string = '';
 
   instalacion: Instalacion | null = null;
-
-  constructor(
-    private route: ActivatedRoute,
-    private censoService: CensoService,
-    private cd: ChangeDetectorRef
-  ) {
-  }
-
+  
   ngOnInit(): void {
     this.censoService.mostrarContadores.set(false);
     const id = this.route.snapshot.paramMap.get('id');

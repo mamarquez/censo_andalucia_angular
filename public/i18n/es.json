@@ -141,6 +141,9 @@
     "tipo_gestor": "Tipo de gestor",
     "accesibilidad": "Accesibilidad/Supresión de barreras arquitectónicas",
     "descargar": "Descargar:",
-    "pdf": "pdf"
+    "pdf": "pdf",
+    "galeria": "Galería de fotos",
+    "galeria_cargando": "Cargando galería...",
+    "galeria_vacia": "No hay imágenes en la galería."
   }
 }

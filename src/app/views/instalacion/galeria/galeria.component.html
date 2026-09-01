@@ -1,4 +1,26 @@
+<div id="content" class="content full">
+  <h4>
+    <i class="fa fa-camera"></i> {{ 'instalacion.galeria' | translate }}
+  </h4>
 
-    <div id="content" class="content full">
-            Prueba
-    </div>
+  @if (cargando) {
+    <p>{{ 'instalacion.galeria_cargando' | translate }}</p>
+  } @else if (imagenes.length) {
+    <swiper-container
+      class="galeria-swiper"
+      style="width: 100%; height: 400px;"
+      navigation="true"
+      pagination="true"
+      loop="true">
+      @for (item of imagenes; track item.id) {
+        <swiper-slide>
+          <a [href]="item.url" [attr.data-title]="item.descripcion || item.nombre">
+            <img [src]="item.url" [alt]="item.descripcion || item.nombre" class="img-responsive">
+          </a>
+        </swiper-slide>
+      }
+    </swiper-container>
+  } @else {
+    <p>{{ 'instalacion.galeria_vacia' | translate }}</p>
+  }
+</div>

@@ -141,6 +141,9 @@
     "tipo_gestor": "Manager type",
     "accesibilidad": "Accessibility/Architectural barrier removal",
     "descargar": "Download:",
-    "pdf": "pdf"
+    "pdf": "pdf",
+    "galeria": "Photo gallery",
+    "galeria_cargando": "Loading gallery...",
+    "galeria_vacia": "No images in the gallery."
   }
 }
