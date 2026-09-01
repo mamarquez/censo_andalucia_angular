@@ -5,13 +5,13 @@ import { environment } from '../environments/environment';
 import { Provincia } from '../models/provincia';
 import { buildHttpParams } from '../utils/params.util';
 import { ApiResponse } from '../models/apiresponse';
-import {Cerramiento} from '../models/cerramiento';
-import {NivelDotacion} from '../models/niveldotacion';
-import {Configuracion} from '../models/configuracion';
-import {Municipio} from '../models/municipio';
-import {ActividadDeportiva} from '../models/actividaddeportiva';
-import {Filtros} from '../filtros/filtros';
-import {Instalacion} from '../models/instalacion';
+import { Cerramiento } from '../models/cerramiento';
+import { NivelDotacion } from '../models/niveldotacion';
+import { Configuracion } from '../models/configuracion';
+import { Municipio } from '../models/municipio';
+import { ActividadDeportiva } from '../models/actividaddeportiva';
+import { Filtros } from '../filtros/filtros';
+import { Instalacion } from '../models/instalacion';
 import { InstalacionImagen } from '../models/instalacion-imagen';
 
 @Injectable({

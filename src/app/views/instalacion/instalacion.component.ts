@@ -8,11 +8,10 @@ import {ApiResponse} from '../../models/apiresponse';
 import {Instalacion} from '../../models/instalacion';
 import {LoaderComponent} from '../../layout/loader/loader.component';
 import {MapaComponent} from '../../shared/mapa/mapa.component';
-import {TranslatePipe} from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { CoordenadaComponent } from './modal/coordenada.component';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { GaleroaInstalacionComponent } from './galeria/galeria.component';
-import { InstalacionImagen } from '../../models/instalacion-imagen';
 
 @Component({
   standalone: true,
