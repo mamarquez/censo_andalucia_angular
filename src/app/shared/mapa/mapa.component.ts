@@ -11,13 +11,18 @@ import {
 import * as L from 'leaflet';
 
 /**
- * Mapa Leaflet + OpenStreetMap con un único marcador.
+ * Mapa Leaflet + OpenStreetMap con un único marcador, o con una polilínea de ruta.
  *
  * <p>Se le pasan `lat`/`lng` (coordenadas decimales) y opcionalmente un `titulo`
  * para el popup. Si no hay coordenadas válidas no renderiza nada.</p>
  *
+ * <p>Si además se le pasa `puntos` (lista de coordenadas `[lat, lng]`), se dibuja
+ * una polilínea con esos puntos y el mapa se encuadra a su extensión (`lat`/`lng`
+ * dejan de usarse como centro en ese caso).</p>
+ *
  * <pre>
  * &lt;app-mapa [lat]="37.38" [lng]="-5.97" [titulo]="instalacion.nombre"&gt;&lt;/app-mapa&gt;
+ * &lt;app-mapa [puntos]="ruta.puntos" [titulo]="ruta.nombre"&gt;&lt;/app-mapa&gt;
  * </pre>
  *
  * @author Duncan
@@ -49,10 +54,21 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
   /** Permitir zoom con la rueda del ratón. */
   @Input() scrollWheelZoom = true;
 
+  /** Si es `false`, deshabilita por completo el zoom interactivo (rueda, doble-click, teclado, pellizco y los botones +/-). */
+  @Input() zoomInteractivo = true;
+
+  /**
+   * Puntos `[lat, lng]` del trazado de una ruta. Si se informa (con 2 o más puntos),
+   * se dibuja como polilínea y el mapa se encuadra a su extensión, ignorando `lat`/`lng`
+   * como centro.
+   */
+  @Input() puntos: Array<[number, number]> | null | undefined;
+
   @ViewChild('mapa', { static: true }) private contenedor!: ElementRef<HTMLElement>;
 
   private mapa?: L.Map;
   private marcador?: L.Marker;
+  private polilinea?: L.Polyline;
   private iniciado = false;
 
   ngAfterViewInit(): void {
@@ -61,7 +77,7 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(cambios: SimpleChanges): void {
-    if (this.iniciado && (cambios['lat'] || cambios['lng'])) {
+    if (this.iniciado && (cambios['lat'] || cambios['lng'] || cambios['puntos'])) {
       this.render();
     }
   }
@@ -71,6 +87,15 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private render(): void {
+    if (this.puntos && this.puntos.length >= 2) {
+      this.renderRuta(this.puntos);
+      return;
+    }
+
+    this.renderPunto();
+  }
+
+  private renderPunto(): void {
     const lat = this.aNumero(this.lat);
     const lng = this.aNumero(this.lng);
 
@@ -80,20 +105,11 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
       return;
     }
 
-    if (!this.mapa) {
-      this.mapa = L.map(this.contenedor.nativeElement, {
-        center: [lat, lng],
-        zoom: this.zoom,
-        scrollWheelZoom: this.scrollWheelZoom
-      });
+    this.asegurarMapa([lat, lng]);
+    this.mapa!.setView([lat, lng], this.zoom);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap',
-        maxZoom: 19
-      }).addTo(this.mapa);
-    } else {
-      this.mapa.setView([lat, lng], this.zoom);
-    }
+    this.polilinea?.remove();
+    this.polilinea = undefined;
 
     const icono = L.icon({
       iconUrl: 'assets/leaflet/marker-icon.png',
@@ -108,13 +124,60 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (this.marcador) {
       this.marcador.setLatLng([lat, lng]);
     } else {
-      this.marcador = L.marker([lat, lng], { icon: icono }).addTo(this.mapa);
+      this.marcador = L.marker([lat, lng], { icon: icono }).addTo(this.mapa!);
     }
 
     if (this.titulo) {
       this.marcador.bindPopup(this.titulo);
     }
 
+    this.invalidarTamano();
+  }
+
+  private renderRuta(puntos: Array<[number, number]>): void {
+    this.asegurarMapa(puntos[0]);
+
+    this.marcador?.remove();
+    this.marcador = undefined;
+
+    if (this.polilinea) {
+      this.polilinea.setLatLngs(puntos);
+    } else {
+      this.polilinea = L.polyline(puntos, { color: '#1a7a3c', weight: 4 }).addTo(this.mapa!);
+    }
+
+    if (this.titulo) {
+      this.polilinea.bindPopup(this.titulo);
+    }
+
+    this.mapa!.fitBounds(this.polilinea.getBounds(), { padding: [20, 20] });
+
+    this.invalidarTamano();
+  }
+
+  private asegurarMapa(centroInicial: [number, number]): void {
+    if (this.mapa) {
+      return;
+    }
+
+    this.mapa = L.map(this.contenedor.nativeElement, {
+      center: centroInicial,
+      zoom: this.zoom,
+      scrollWheelZoom: this.scrollWheelZoom,
+      zoomControl: this.zoomInteractivo,
+      doubleClickZoom: this.zoomInteractivo,
+      boxZoom: this.zoomInteractivo,
+      touchZoom: this.zoomInteractivo,
+      keyboard: this.zoomInteractivo
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap',
+      maxZoom: 19
+    }).addTo(this.mapa);
+  }
+
+  private invalidarTamano(): void {
     // El contenedor puede haberse dimensionado después de crear el mapa.
     setTimeout(() => this.mapa?.invalidateSize(), 0);
   }

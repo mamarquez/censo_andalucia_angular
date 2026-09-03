@@ -144,6 +144,15 @@
     "pdf": "pdf",
     "galeria": "Galería de fotos",
     "galeria_cargando": "Cargando galería...",
-    "galeria_vacia": "No hay imágenes en la galería."
+    "galeria_vacia": "No hay imágenes en la galería.",
+    "rutas": "Rutas deportivas",
+    "rutas_cargando": "Cargando rutas...",
+    "rutas_vacio": "No hay rutas asociadas a esta instalación.",
+    "rutas_distancia": "Distancia",
+    "rutas_desnivel": "Desnivel positivo",
+    "rutas_tiempo_senderismo": "Senderismo",
+    "rutas_tiempo_running": "Running",
+    "rutas_tiempo_btt": "BTT",
+    "rutas_descargar_kml": "Descargar KML"
   }
 }

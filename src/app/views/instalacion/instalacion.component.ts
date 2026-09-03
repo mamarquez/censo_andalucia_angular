@@ -12,6 +12,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { CoordenadaComponent } from './modal/coordenada.component';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { GaleroaInstalacionComponent } from './galeria/galeria.component';
+import { RutaComponent } from "./ruta/ruta.component";
 
 @Component({
   standalone: true,
@@ -25,8 +26,9 @@ import { GaleroaInstalacionComponent } from './galeria/galeria.component';
     TranslatePipe,
     CoordenadaComponent,
     UbicacionComponent,
-    GaleroaInstalacionComponent
-  ],
+    GaleroaInstalacionComponent,
+    RutaComponent
+],
   templateUrl: './instalacion.component.html',
   styleUrls: ['./instalacion.component.css']
 })

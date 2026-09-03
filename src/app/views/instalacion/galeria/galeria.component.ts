@@ -1,8 +1,8 @@
-import {Component, CUSTOM_ELEMENTS_SCHEMA, effect, inject, input} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {TranslatePipe} from '@ngx-translate/core';
-import {register} from 'swiper/element/bundle';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, effect, inject, input, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
+import { register } from 'swiper/element/bundle';
 import { CensoService } from '../../../services/censoService.service';
 import { ApiResponse } from '../../../models/apiresponse';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -22,8 +22,8 @@ export class GaleroaInstalacionComponent {
     private readonly api = `${environment.apiUrl}`;
 
     idInstalacion = input<number>();
-    cargando = false;
-    imagenes: InstalacionImagen[] = [];
+    cargando = signal(false);
+    imagenes = signal<InstalacionImagen[]>([]);
 
     constructor() {
         register();
@@ -38,22 +38,19 @@ export class GaleroaInstalacionComponent {
     }
 
     private cargarGaleria(id: number): void {
-        this.cargando = true;
+        this.cargando.set(true);
 
         this.censoService.cargarImagen(id).subscribe({
             next: (response: ApiResponse<InstalacionImagen[]>) => {
-                // El backend solo devuelve metadata (id, nombre, descripción...), sin URL del
-                // binario; se construye aquí contra el endpoint que sí sirve el fichero:
-                // GET /v1/instalacionesgaleria/images/{nombre}.
-                this.imagenes = (response.data || []).map(img => ({
+                this.imagenes.set((response.data || []).map(img => ({
                     ...img,
                     url: `${this.api}/instalacionesgaleria/images/${img.nombre}`
-                }));
-                this.cargando = false;
+                })));
+                this.cargando.set(false);
             },
             error: (err: HttpErrorResponse) => {
                 console.error('Error al cargar las imágenes de la galería', err);
-                this.cargando = false;
+                this.cargando.set(false);
             }
         });
     }

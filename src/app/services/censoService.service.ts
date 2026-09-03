@@ -13,6 +13,8 @@ import { ActividadDeportiva } from '../models/actividaddeportiva';
 import { Filtros } from '../filtros/filtros';
 import { Instalacion } from '../models/instalacion';
 import { InstalacionImagen } from '../models/instalacion-imagen';
+import { InstalacionRuta } from '../models/instalacion-ruta';
+import { InstalacionRutaCoordenada } from '../models/instalacion-ruta-coordenada';
 
 @Injectable({
   providedIn: 'root'
@@ -142,6 +144,28 @@ export class CensoService {
    */
   cargarImagen(id: number) {
     return this.http.get<ApiResponse<InstalacionImagen[]>>(`${this.api}/instalacionesgaleria/${id}`, {
+      headers: this.headers
+    });
+  }
+
+  /**
+   * Obtener lista de rutas de una instalación
+   * @param idInstalacion Id de la instalacion
+   */
+  cargarRutas(idInstalacion: number) {
+    return this.http.get<ApiResponse<InstalacionRuta[]>>(`${this.api}/instalacionesrutas`, {
+      params: buildHttpParams({ idInstalacion, visible: true }),
+      headers: this.headers
+    });
+  }
+
+  /**
+   * Obtener lista de coordenadas (puntos del trazado) de una ruta
+   * @param idRuta Id de la ruta
+   */
+  cargarCoordenadasRuta(idRuta: number) {
+    return this.http.get<ApiResponse<InstalacionRutaCoordenada[]>>(`${this.api}/instalacionesrutascoordenadas`, {
+      params: buildHttpParams({ idRuta }),
       headers: this.headers
     });
   }

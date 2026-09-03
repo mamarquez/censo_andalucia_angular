@@ -2,6 +2,7 @@ import {Provincia} from './provincia';
 import {Municipio} from './municipio';
 import {InstalacionTelefono} from './instalaciontelefono';
 import {Gestor} from './gestor';
+import { InstalacionRuta } from './instalacion-ruta';
 
 /**
  * Espejo del DTO `InstalacionRecord` del backend.
@@ -19,7 +20,7 @@ export class Instalacion {
     municipio!: Municipio;
     direccion?: string;
     cp!: string;
-    telefonos?: InstalacionTelefono[];
+    telefonos?: InstalacionTelefono[] | null;
     fax?: string;
     email?: string;
     web?: string;
@@ -45,6 +46,7 @@ export class Instalacion {
     xy_y?: string;
     xy_z?: string;
     referencia_catastral?: string;
+    rutas?: InstalacionRuta[] | null;
 
   // Configuración de validaciones
   public static readonly campos = {

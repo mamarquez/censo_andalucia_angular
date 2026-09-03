@@ -171,6 +171,11 @@
             <app-instalacion-galeria [idInstalacion]="instalacion.id" />
           }
 
+          <!-- Rutas -->
+          @if (instalacion) {
+            <app-ruta-instalacion [idInstalacion]="instalacion.id" />
+          }
+
         </div>
       </div>
     </div>

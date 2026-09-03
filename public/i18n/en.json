@@ -144,6 +144,15 @@
     "pdf": "pdf",
     "galeria": "Photo gallery",
     "galeria_cargando": "Loading gallery...",
-    "galeria_vacia": "No images in the gallery."
+    "galeria_vacia": "No images in the gallery.",
+    "rutas": "Sport routes",
+    "rutas_cargando": "Loading routes...",
+    "rutas_vacio": "No routes associated with this facility.",
+    "rutas_distancia": "Distance",
+    "rutas_desnivel": "Elevation gain",
+    "rutas_tiempo_senderismo": "Hiking",
+    "rutas_tiempo_running": "Running",
+    "rutas_tiempo_btt": "Mountain biking",
+    "rutas_descargar_kml": "Download KML"
   }
 }
