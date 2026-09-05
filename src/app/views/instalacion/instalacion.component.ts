@@ -13,6 +13,7 @@ import { CoordenadaComponent } from './modal/coordenada.component';
 import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { GaleroaInstalacionComponent } from './galeria/galeria.component';
 import { RutaComponent } from "./ruta/ruta.component";
+import { DeportivaInstalacionComponent } from './deportivas/deportiva.component';
 
 @Component({
   standalone: true,
@@ -27,7 +28,8 @@ import { RutaComponent } from "./ruta/ruta.component";
     CoordenadaComponent,
     UbicacionComponent,
     GaleroaInstalacionComponent,
-    RutaComponent
+    RutaComponent,
+    DeportivaInstalacionComponent
 ],
   templateUrl: './instalacion.component.html',
   styleUrls: ['./instalacion.component.css']

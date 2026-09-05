@@ -153,6 +153,9 @@
     "rutas_tiempo_senderismo": "Hiking",
     "rutas_tiempo_running": "Running",
     "rutas_tiempo_btt": "Mountain biking",
-    "rutas_descargar_kml": "Download KML"
+    "rutas_descargar_kml": "Download KML",
+    "espacios_deportivos": "Sports facilities",
+    "espacios_deportivos_cargando": "Loading sports facilities...",
+    "espacios_deportivos_vacio": "No sports facilities associated with this installation."
   }
 }

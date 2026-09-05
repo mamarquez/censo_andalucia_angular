@@ -1,4 +1,4 @@
-<div id="content" class="content full">
+<div>
   <h4>
     <i class="fa fa-road"></i> {{ 'instalacion.rutas' | translate }}
   </h4>
@@ -7,83 +7,78 @@
     <p>{{ 'instalacion.rutas_cargando' | translate }}</p>
   } @else if (rutas().length) {
     <ul>
-      @for (ruta of rutas(); track ruta.id) {
-        <li class="type-rent col-md-12">
-            <div class="col-md-12">
-                <div class="property-info">
-                    <h3>
-                        {{ ruta.nombre }}
-                        @if (ruta.descripcion) {
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <span class="location"> ({{ ruta.descripcion }})</span>
-                        }
-                    </h3>
+        @for (ruta of rutas(); track ruta.id) {
+            <li class="type-rent col-md-12">
+                <div class="col-md-12">
+                    <div class="property-info">
+                        <h3>
+                            {{ ruta.nombre }}
+                            @if (ruta.descripcion) {
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span class="location"> ({{ ruta.descripcion }})</span>
+                            }
+                        </h3>
 
-                    <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="col-md-1">
-                                imagen
-                            </th>
-                            @if (ruta.distanciaMetros) {
-                                <th><i class="fa fa-arrows-h"></i> {{ 'instalacion.rutas_distancia' | translate }}</th>
-                            }
-                            @if (ruta.tiempoSenderismoMinutos) {
-                                <th><i class="fa fa-male"></i> {{ 'instalacion.rutas_tiempo_senderismo' | translate }}</th>
-                            }
-                            @if (ruta.tiempoRunningMinutos) {
-                                <th><i class="fa fa-heartbeat"></i> {{ 'instalacion.rutas_tiempo_running' | translate }}</th>
-                            }
-                            @if (ruta.tiempoBttMinutos) {
-                                <th><i class="fa fa-bicycle"></i> {{ 'instalacion.rutas_tiempo_btt' | translate }}</th>
-                            }
-                        <th class="col-md-1"></th>
-                        </tr>
-                    </thead>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-1"></th>
+                                    @if (ruta.distanciaMetros) {
+                                        <th><i class="fa fa-arrows-h"></i> {{ 'instalacion.rutas_distancia' | translate }}</th>
+                                    }
+                                    @if (ruta.tiempoSenderismoMinutos) {
+                                        <th><i class="fa fa-male"></i> {{ 'instalacion.rutas_tiempo_senderismo' | translate }}</th>
+                                    }
+                                    @if (ruta.tiempoRunningMinutos) {
+                                        <th><i class="fa fa-heartbeat"></i> {{ 'instalacion.rutas_tiempo_running' | translate }}</th>
+                                    }
+                                    @if (ruta.tiempoBttMinutos) {
+                                        <th><i class="fa fa-bicycle"></i> {{ 'instalacion.rutas_tiempo_btt' | translate }}</th>
+                                    }
+                                <th class="col-md-1"></th>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>
-                                @if (puntosPorRuta()[ruta.id]?.length) {
-                                    <app-mapa
-                                        class="mapa-mini-ruta"
-                                        [puntos]="puntosPorRuta()[ruta.id]"
-                                        [zoom]="14"
-                                        [scrollWheelZoom]="false"
-                                        [zoomInteractivo]="false"
-                                        [titulo]="ruta.nombre">
-                                    </app-mapa>
-                                }
-                            </td>
-                            @if (ruta.distanciaMetros) {
-                                <td>{{ ruta.distanciaMetros | number:'1.0-0' }} m</td>
-                            }
-                            @if (ruta.tiempoSenderismoMinutos) {
-                                <td><i class="far fa-clock"></i> {{ ruta.tiempoSenderismoMinutos }} min</td>
-                            }
-                            @if (ruta.tiempoRunningMinutos) {
-                                <td><i class="far fa-clock"></i> {{ ruta.tiempoRunningMinutos }} min</td>
-                            }
-                            @if (ruta.tiempoBttMinutos) {
-                                <td><i class="far fa-clock"></i> {{ ruta.tiempoBttMinutos }} min</td>
-                            }
-                            @if (ruta.id) {
-                                <td>
-                                    <a class="btn btn-primary btn-sm" [href]="urlDescargaKml(ruta.id)">
-                                        <i class="fa fa-download"></i> {{ 'instalacion.rutas_descargar_kml' | translate }}
-                                    </a>
-                                </td>
-                            }
-                        </tr>
-                    </tbody>
-                    </table>
-
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @if (puntosPorRuta()[ruta.id]?.length) {
+                                            <app-mapa
+                                                class="mapa-mini-ruta"
+                                                [puntos]="puntosPorRuta()[ruta.id]"
+                                                [zoom]="14"
+                                                [scrollWheelZoom]="false"
+                                                [zoomInteractivo]="false"
+                                                [titulo]="ruta.nombre">
+                                            </app-mapa>
+                                        }
+                                    </td>
+                                    @if (ruta.distanciaMetros) {
+                                        <td>{{ ruta.distanciaMetros | number:'1.0-0' }} m</td>
+                                    }
+                                    @if (ruta.tiempoSenderismoMinutos) {
+                                        <td><i class="far fa-clock"></i> {{ ruta.tiempoSenderismoMinutos }} min</td>
+                                    }
+                                    @if (ruta.tiempoRunningMinutos) {
+                                        <td><i class="far fa-clock"></i> {{ ruta.tiempoRunningMinutos }} min</td>
+                                    }
+                                    @if (ruta.tiempoBttMinutos) {
+                                        <td><i class="far fa-clock"></i> {{ ruta.tiempoBttMinutos }} min</td>
+                                    }
+                                    @if (ruta.id) {
+                                        <td>
+                                            <a class="btn btn-primary btn-sm" [href]="urlDescargaKml(ruta.id)">
+                                                <i class="fa fa-download"></i> {{ 'instalacion.rutas_descargar_kml' | translate }}
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-        </li>
-    }
+            </li>
+        }
     </ul>
-  } @else {
-    <p>{{ 'instalacion.rutas_vacio' | translate }}</p>
   }
 </div>

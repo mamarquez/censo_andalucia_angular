@@ -1,4 +1,4 @@
-<div id="content" class="content full">
+<div>
   <h4>
     <i class="fa fa-camera"></i> {{ 'instalacion.galeria' | translate }}
   </h4>
@@ -6,9 +6,8 @@
   @if (cargando()) {
     <p>{{ 'instalacion.galeria_cargando' | translate }}</p>
   } @else if (imagenes().length) {
-    <swiper-container
+    <div
       class="galeria-swiper"
-      style="width: 100%; height: 400px;"
       navigation="true"
       pagination="true"
       loop="true">
@@ -19,7 +18,7 @@
           </a>
         </swiper-slide>
       }
-    </swiper-container>
+    </div>
   } @else {
     <p>{{ 'instalacion.galeria_vacia' | translate }}</p>
   }

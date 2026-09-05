@@ -3,6 +3,11 @@
   width: 100%;
 }
 
+/* Reduce el ancho máximo de la página respecto al .container de Bootstrap 5 (1320px). */
+.container {
+  max-width: 1140px;
+}
+
 app-mapa.map-single-page {
   display: block;
   width: 100%;

@@ -15,6 +15,7 @@ import { Instalacion } from '../models/instalacion';
 import { InstalacionImagen } from '../models/instalacion-imagen';
 import { InstalacionRuta } from '../models/instalacion-ruta';
 import { InstalacionRutaCoordenada } from '../models/instalacion-ruta-coordenada';
+import { InstalacionEspacioDeportivo } from '../models/instalacion-espacio-deportivo';
 
 @Injectable({
   providedIn: 'root'
@@ -104,6 +105,19 @@ export class CensoService {
   cargarNivelesDotacion(filtros: Filtros = this.filtros) {
     return this.http.get<ApiResponse<NivelDotacion[]>>(`${this.api}/nivelesdotaciones`, {
       params: buildHttpParams(filtros), headers: this.headers
+    });
+  }
+
+  /**
+   * Obtener espacios deportivos de instalaciones.
+   * <p>
+   * El backend no permite filtrar por instalación (solo por `id`, `codigo` y `visible`),
+   * así que se obtiene el listado completo de visibles y se filtra por `idInstalacion`
+   * en el cliente.
+   */
+  cargarInstalacionesDeportivas(id: number) {
+    return this.http.get<ApiResponse<InstalacionEspacioDeportivo[]>>(`${this.api}/instalacionesespaciosdeportivos`, {
+      params: buildHttpParams({ id, visible: true }), headers: this.headers
     });
   }
 

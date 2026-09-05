@@ -153,6 +153,9 @@
     "rutas_tiempo_senderismo": "Senderismo",
     "rutas_tiempo_running": "Running",
     "rutas_tiempo_btt": "BTT",
-    "rutas_descargar_kml": "Descargar KML"
+    "rutas_descargar_kml": "Descargar KML",
+    "espacios_deportivos": "Espacios deportivos",
+    "espacios_deportivos_cargando": "Cargando espacios deportivos...",
+    "espacios_deportivos_vacio": "No hay espacios deportivos asociados a esta instalación."
   }
 }
