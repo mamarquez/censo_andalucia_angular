@@ -10,7 +10,11 @@ import { InstalacionEspacioDeportivo } from '../../../models/instalacion-espacio
 @Component({
   standalone: true,
   selector: 'app-instalacion-deportiva',
-  imports: [CommonModule, FormsModule, TranslatePipe],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TranslatePipe
+],
   templateUrl: './deportiva.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

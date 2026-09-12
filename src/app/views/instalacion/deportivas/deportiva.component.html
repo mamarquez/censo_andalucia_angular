@@ -3,7 +3,12 @@
     <p>{{ 'instalacion.espacios_deportivos_cargando' | translate }}</p>
   } @else if (espacios().length) {
       @for (espacio of espacios(); track espacio.id) {
-        <span class="badge badge-primary" style="margin-right: 5px;">{{ espacio.nombre }}</span>
+          <span
+            class="badge" 
+            [style]="espacio.tipoInstalacion?.valor || 'background: #6c757d; color: #fff;'"
+            style="margin-right: 5px;">
+          {{ espacio.nombre }}
+          </span>
       }
   } @else {
     <p>{{ 'instalacion.espacios_deportivos_vacio' | translate }}</p>
