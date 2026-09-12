@@ -1,7 +1,7 @@
 <app-loader [cargando]="cargando"></app-loader>
 
 @if (!cargando && error) {
-  <div class="main" role="main">
+  <main class="main" [attr.aria-label]="(noEncontrada ? 'errores.instalacion_no_encontrada' : 'errores.instalacion_error') | translate">
     <div id="content" class="content full">
       <div class="container">
         <div class="error-404 text-center">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 }
 
 @if (!cargando && !error && instalacion) {
@@ -36,7 +36,7 @@
       </app-modal-coordenada>
     }
 
-    <div class="main" role="main">
+    <main class="main" [attr.aria-label]="instalacion.nombre">
       <div id="content" class="content full">
         <div class="container">
           <div class="row">
@@ -186,6 +186,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
 }

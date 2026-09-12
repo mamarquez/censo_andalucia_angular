@@ -6,7 +6,6 @@ import {SelectModule} from 'primeng/select';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';
-import {Configuracion} from '../../models/configuracion';
 import {register} from 'swiper/element/bundle';
 import {Provincia} from '../../models/provincia';
 import {Municipio} from '../../models/municipio';
@@ -20,8 +19,7 @@ import { environment } from '../../environments/environment';
   selector: 'app-widget',
   standalone: true,
   imports: [CommonModule, FormsModule, SelectModule, InputNumberModule, TextareaModule, TranslatePipe],
-  templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.css']
+  templateUrl: './widget.component.html'
 })
 export class WidgetComponent implements OnInit {
 
@@ -45,10 +43,10 @@ export class WidgetComponent implements OnInit {
   };
 
   constructor(
-    private censoService: CensoService,
-    private router: Router,
-    private cd: ChangeDetectorRef,
-    private translateService: TranslateService
+    private readonly censoService: CensoService,
+    private readonly router: Router,
+    private readonly cd: ChangeDetectorRef,
+    private readonly translateService: TranslateService
   ) {
     register();
   }

@@ -31,11 +31,11 @@ export class InstalacionesComponent implements OnInit {
   };
 
   constructor(
-    private censoService: CensoService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private cd: ChangeDetectorRef,
-    private messageService: MessageService
+    private readonly censoService: CensoService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly cd: ChangeDetectorRef,
+    private readonly messageService: MessageService
   ) {
     register();
   }

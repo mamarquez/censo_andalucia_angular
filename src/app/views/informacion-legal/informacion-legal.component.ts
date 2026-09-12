@@ -14,8 +14,7 @@ import {TranslatePipe} from '@ngx-translate/core';
   standalone: true,
   selector: 'app-informacion-legal',
   imports: [CommonModule, FormsModule, LoaderComponent, TranslatePipe],
-  templateUrl: './informacion-legal.component.html',
-  styleUrls: ['./informacion-legal.component.css']
+  templateUrl: './informacion-legal.component.html'
 })
 export class InformacionLegalComponent implements OnInit {
 
@@ -29,10 +28,10 @@ export class InformacionLegalComponent implements OnInit {
   };
 
   constructor(
-    private censoService: CensoService,
-    private router: Router,
-    private cd: ChangeDetectorRef,
-    private sanitizer: DomSanitizer
+    private readonly censoService: CensoService,
+    private readonly router: Router,
+    private readonly cd: ChangeDetectorRef,
+    private readonly sanitizer: DomSanitizer
   ) {
   }
 

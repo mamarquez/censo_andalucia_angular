@@ -23,6 +23,9 @@ export interface OpcionSelect {
   etiqueta: string;
 }
 
+/** Valor normalizado del select: número/string de la opción elegida, o `null` sin selección. */
+type ValorSelect = string | number | null;
+
 /**
  * Select genérico y reutilizable del censo.
  *
@@ -89,7 +92,7 @@ export class SelectComponent implements ControlValueAccessor {
    * Emite el valor normalizado cada vez que el usuario cambia la selección.
    * Complementa a `[(ngModel)]`; útil para selects encadenados (provincia -> municipio).
    */
-  @Output() readonly cambio = new EventEmitter<string | number | null>();
+  @Output() readonly cambio = new EventEmitter<ValorSelect>();
 
   /** Valor actual (string, porque `<select>` siempre opera con strings). */
   readonly valor = signal<string>('');
@@ -103,7 +106,7 @@ export class SelectComponent implements ControlValueAccessor {
   /** El `<select>` se deshabilita si lo pide el padre o Forms. */
   readonly bloqueado = computed(() => this.deshabilitadoInput() || this.deshabilitadoForm());
 
-  private alCambiar: (valor: string | number | null) => void = () => {};
+  private alCambiar: (valor: ValorSelect) => void = () => {};
   private alTocar: () => void = () => {};
 
   /** Handler del evento `change` del `<select>` nativo. */
@@ -125,7 +128,7 @@ export class SelectComponent implements ControlValueAccessor {
     this.valor.set(valor === null || valor === undefined ? '' : String(valor));
   }
 
-  registerOnChange(fn: (valor: string | number | null) => void): void {
+  registerOnChange(fn: (valor: ValorSelect) => void): void {
     this.alCambiar = fn;
   }
 
@@ -141,7 +144,7 @@ export class SelectComponent implements ControlValueAccessor {
    * Devuelve `null` para "sin selección", un `number` si todas las opciones que
    * coinciden son numéricas, o el string tal cual en otro caso.
    */
-  private normalizar(bruto: string): string | number | null {
+  private normalizar(bruto: string): ValorSelect {
     if (bruto === '') {
       return null;
     }

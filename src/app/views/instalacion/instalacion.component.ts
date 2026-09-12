@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, Router, RouterLink} from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
 import {CensoService} from '../../services/censoService.service';
 import {ApiResponse} from '../../models/apiresponse';

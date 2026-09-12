@@ -26,10 +26,10 @@ export class PlanesLocalesComponent implements OnInit {
   };
 
   constructor(
-    private censoService: CensoService,
-    private router: Router,
-    private cd: ChangeDetectorRef,
-    private sanitizer: DomSanitizer
+    private readonly censoService: CensoService,
+    private readonly router: Router,
+    private readonly cd: ChangeDetectorRef,
+    private readonly sanitizer: DomSanitizer
   ) {
     register();
   }

@@ -36,9 +36,9 @@ import { OpcionSelect, SelectComponent } from '../../shared/select/select.compon
 export class BuscarComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private censoService: CensoService,
-    private cd: ChangeDetectorRef
+    private readonly router: Router,
+    private readonly censoService: CensoService,
+    private readonly cd: ChangeDetectorRef
   ) {}
 
   /** Opciones de los selects con datos reales del backend. */

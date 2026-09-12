@@ -10,6 +10,9 @@ import {
 } from '@angular/core';
 import * as L from 'leaflet';
 
+/** Coordenada en grados decimales, admitida como número, texto, o ausente. */
+type Coordenada = number | string | null | undefined;
+
 /**
  * Mapa Leaflet + OpenStreetMap con un único marcador, o con una polilínea de ruta.
  *
@@ -40,10 +43,10 @@ import * as L from 'leaflet';
 export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
 
   /** Latitud en grados decimales. */
-  @Input() lat: number | string | null | undefined;
+  @Input() lat: Coordenada;
 
   /** Longitud en grados decimales. */
-  @Input() lng: number | string | null | undefined;
+  @Input() lng: Coordenada;
 
   /** Texto del popup del marcador. */
   @Input() titulo = '';
@@ -182,7 +185,7 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
     setTimeout(() => this.mapa?.invalidateSize(), 0);
   }
 
-  private aNumero(valor: number | string | null | undefined): number | null {
+  private aNumero(valor: Coordenada): number | null {
     if (valor === null || valor === undefined || valor === '') {
       return null;
     }

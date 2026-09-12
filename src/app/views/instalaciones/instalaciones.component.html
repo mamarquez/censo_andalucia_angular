@@ -1,7 +1,7 @@
 <app-loader [cargando]="cargando"></app-loader>
 
 @if (!cargando && error) {
-  <div class="main" role="main">
+  <main class="main" [attr.aria-label]="'errores.instalacion_error' | translate">
     <div id="content" class="content full">
       <div class="container">
         <div class="error-404 text-center">
@@ -13,11 +13,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 }
 
 @if (!cargando && !error) {
-  <div class="main" role="main">
+  <main class="main" aria-label="{{ 'instalaciones.total_instalaciones' | translate }}">
   <div id="content" class="content full">
     <div class="container">
       <div class="row">
@@ -59,143 +59,6 @@
             </ul>
 
           </div>
-
-          <!--
-            <ul>
-
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código: 040130002</span>
-                    <h3><a href="instalacion/7907">PISTAS POLIDEPORTIVAS MUNICIPALES DE LA AVENIDA DEL MEDITERRÁNEO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130003</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7908</span>
-                    <h3><a href="instalacion/7908">I.E.S. NICOLÁS SALMERÓN Y ALONSO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130004</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7922</span>
-                    <h3><a href="instalacion/7922">I.E.S. MAESTRO PADILLA</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130005</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7923</span>
-                    <h3><a href="instalacion/7923">C.E.I.P. LOPE DE VEGA</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130006</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7924</span>
-                    <h3><a href="instalacion/7924">C.E.I.P. MAR MEDITERRÁNEO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130007</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7925</span>
-                    <h3><a href="instalacion/7925">C.E.I.P. RAFAEL ALBERTI</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130008</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7926</span>
-                    <h3><a href="instalacion/7926">C.D.P. NUESTRA SEÑORA DE FÁTIMA</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130009</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7927</span>
-                    <h3><a href="instalacion/7927">C.E.I.P. VIRGEN DEL LORETO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130010</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7928</span>
-                    <h3><a href="instalacion/7928">C.E.I.P. SAN VALENTÍN</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="type-rent col-md-12">
-                <div class="col-md-12">
-                  <div class="property-info">
-                    <span class="codigo-ieda">Código IEDA: 040130012</span>
-                    <span class="codigo-ieda separado">Código IEDA (anterior): 7931</span>
-                    <h3><a href="instalacion/7931">C.E.I.P. SAN FERNANDO</a> <span class="location"><i class="fa fa-map-marker"></i> Almería (Almería)</span></h3>
-
-                    <div class="tipos">
-                      <div class="tipo mini PPP"><span>Pistas y pabellones deportivos</span></div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-
--->
 
           <div class="text-center">
             <ul class="pagination justify-content-center">
@@ -444,5 +307,5 @@
 
     </div>
   </div>
-</div>
+</main>
 }
