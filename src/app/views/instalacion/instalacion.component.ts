@@ -14,6 +14,7 @@ import { UbicacionComponent } from './ubicacion/ubicacion.component';
 import { GaleroaInstalacionComponent } from './galeria/galeria.component';
 import { RutaComponent } from "./ruta/ruta.component";
 import { DeportivaInstalacionComponent } from './deportivas/deportiva.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   standalone: true,
@@ -39,6 +40,7 @@ export class InstalacionComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly censoService = inject(CensoService);
   private readonly cd = inject(ChangeDetectorRef);
+  private readonly api = `${environment.apiUrl}`;
 
   cargando: boolean = true;
 
@@ -88,6 +90,10 @@ export class InstalacionComponent implements OnInit {
   mostrarModalCoordenadas(x: string, y: string): void {
     this.coordenadaX = x;
     this.coordenadaY = y;
+  }
+
+  urlExportarPdf(id: number): string {
+    return `${this.api}/exportarpdf/${id}`;
   }
 
 }

@@ -122,7 +122,7 @@
                     </li>
                   }
 
-                  @if (instalacion.telefonos) {
+                  @if (instalacion.telefonos && instalacion.telefonos.length > 0) {
                       <li class="list-group-item"> {{ 'instalacion.telefono' | translate }}
                         @for(telefono of instalacion.telefonos; track telefono.id) {
                           <span class="badge">{{telefono.numero}}</span>
@@ -130,20 +130,20 @@
                       </li>
                   }
 
-                  @if (instalacion.fax) {
+                  @if (instalacion.fax && instalacion.fax.length > 0) {
                     <li class="list-group-item"> {{ 'instalacion.fax' | translate }}
                         <span class="badge">{{ instalacion.fax }}</span>
                     </li>
                   }
 
-                  @if (instalacion.web) {
+                  @if (instalacion.web && instalacion.web.length > 0) {
                     <li class="list-group-item"> {{ 'instalacion.web' | translate }}
                       <span class="badge">
                         <a [href]="instalacion.web" target="_blank" rel="noopener">{{ instalacion.web }}</a></span>
                     </li>
                   }
 
-                  @if (instalacion.email) {
+                  @if (instalacion.email && instalacion.email.length > 0) {
                     <li class="list-group-item"> {{ 'instalacion.correo_electronico' | translate }}
                       <span class="badge">
                         <a [href]="'mailto:' + instalacion.email" target="_blank" rel="noopener">{{ instalacion.email }}</a>
@@ -163,7 +163,7 @@
                 <app-modal-ubicacion [id]="instalacion.id.toString()"></app-modal-ubicacion>
               <hr>
 
-                @if (instalacion.gestor) {
+                @if (instalacion.gestor && instalacion.gestor.nombre) {
                     <h4><i class="fa fa-user"></i> {{ 'instalacion.tipo_gestor' | translate }}</h4>
                     {{ instalacion.gestor.nombre }}
                     <ul class="carets">
@@ -180,7 +180,7 @@
                 <span class="available"><i class="fa fa-check-square"></i> @_sub.nombre: @_sub.valor</span>
               </div>
 
-              <h6>{{ 'instalacion.descargar' | translate }} <a [href]="'/ExportarPDF/' + instalacion.id" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener"><i class="fa fa-file-text"></i> {{ 'instalacion.pdf' | translate }}</a></h6>
+              <h6>{{ 'instalacion.descargar' | translate }} <a [href]="urlExportarPdf(instalacion.id)" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener"><i class="fa fa-file-text"></i> {{ 'instalacion.pdf' | translate }}</a></h6>
             </div>
 
           </div>
