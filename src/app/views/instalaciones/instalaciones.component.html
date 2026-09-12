@@ -136,7 +136,8 @@
             </ul>
 
             <form method="get" action="/busqueda-listado" class="d-flex justify-content-center align-items-center mt-3 mb-2">
-              <select name="page" class="form-select form-select-sm me-2" style="height:auto; width:9.2rem;">
+              <label for="paginaSelector" class="visually-hidden">{{ 'instalaciones.pagina' | translate }}</label>
+              <select id="paginaSelector" name="page" class="form-select form-select-sm me-2" style="height:auto; width:9.2rem;">
                 <option value="1" selected="">{{ 'instalaciones.pagina' | translate }} 1</option>
                 <option value="2">Página 2</option>
                 <option value="3">Página 3</option>

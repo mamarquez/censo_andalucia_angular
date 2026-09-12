@@ -884,7 +884,6 @@ body.boxed .body {
 .main-menu-wrapper {
   display: block;
   position: relative;
-  background: #fff;
   z-index: 6;
   width: 100%;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
@@ -1091,7 +1090,6 @@ html[xmlns] .slides {
   width: 230px;
   background: #ffffff;
   border-top: 3px solid rgba(0,0,0,.8);
-  position: absolute;
   right: 50%;
   margin-right: -500px;
   position: relative;
@@ -1210,7 +1208,6 @@ html[xmlns] .slides {
 .flexslider .flex-prev, .flexslider .flex-next {
   background: rgba(0,0,0,.6);
   color: #f8f7f3;
-  display: block;
   margin-bottom: 10px;
   position: absolute;
   top: 50%;
@@ -1219,8 +1216,7 @@ html[xmlns] .slides {
   line-height: 25px;
   width: 25px;
   height: 25px;
-  display: inline-block;
-  font-family: FontAwesome;
+  font-family: FontAwesome, sans-serif;
   font-style: normal;
   font-weight: normal;
   -webkit-font-smoothing: antialiased;
@@ -1491,7 +1487,6 @@ html[xmlns] .slides {
 }
 
 .property-info .location {
-  /*display:block;*/
   font-size: 80%;
   padding: 0 0 10px 0;
 }
@@ -2698,7 +2693,7 @@ html[xmlns] .slides {
   float: left;
   width: 0%;
   height: 100%;
-  background-color: #eaeaea;
+  background-color: #005128;
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #ffffff;
@@ -3104,7 +3099,6 @@ span.progress-bar-tooltip:after {
 
 .pricing-column .interval {
   display: block;
-  display: block;
   padding-bottom: 17px;
   min-height: 38px;
   color: #999999;
@@ -3337,7 +3331,7 @@ span.progress-bar-tooltip:after {
   .pricing-column.highlight {
     margin: 0;
   }
-  .pricing-table > div:third-child .pricing-column-content, .pricing-table > div:nth-child(2n+1) h3 {
+  .pricing-table > div:nth-child(3) .pricing-column-content, .pricing-table > div:nth-child(2n+1) h3 {
     border-left: 1px solid #eeeeee!important;
   }
 
@@ -3493,9 +3487,6 @@ span.progress-bar-tooltip:after {
   .flex-caption .fa-caret-down {
     display: none;
   }
-  /*.property-listing > ul > li, .agents-listing > ul > li{
-    padding:0;
-  }*/
   .property-listing > ul > li > div, .agents-listing > ul > li > div {
     padding-left: 0;
     padding-right: 0;

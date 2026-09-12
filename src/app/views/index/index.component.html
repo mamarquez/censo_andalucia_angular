@@ -23,6 +23,7 @@
         <form (ngSubmit)="buscar()">
           <div class="row">
             <div class="col-md-8">
+              <label for="nombreInstalacion" class="visually-hidden">{{ 'index.buscar_placeholder' | translate }}</label>
               <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control"
                      [placeholder]="'index.buscar_placeholder' | translate" [(ngModel)]="modeloBusqueda.nombreInstalacion">
             </div>
