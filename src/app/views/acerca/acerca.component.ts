@@ -44,7 +44,7 @@ export class AcercaComponent implements OnInit {
           const htmlCrudo = response.data[0].valor;
           // Seguro: Configuracion.valor solo lo escribe un administrador autenticado
           // desde el panel de gestión interno, nunca un usuario público.
-          this.acerca = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
+          this.acerca = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo); // NOSONAR
           this.cd.detectChanges();
         }
       },

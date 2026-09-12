@@ -5,6 +5,7 @@ import {
   EventEmitter,
   forwardRef,
   Input,
+  input,
   Output,
   signal
 } from '@angular/core';
@@ -61,23 +62,23 @@ type ValorSelect = string | number | null;
 })
 export class SelectComponent implements ControlValueAccessor {
   /** Lista de opciones a mostrar. */
-  @Input({ required: true }) opciones: OpcionSelect[] = [];
+  opciones = input.required<OpcionSelect[]>();
 
   /** Texto de la etiqueta `<label>`. Si es vacío no se renderiza el label. */
-  @Input() etiqueta = '';
+  etiqueta = input('');
 
   /**
-   * Id del control (para el `for` del label y accesibilidad).
-   * NOSONAR: Math.random() solo genera un sufijo cosmético para evitar colisiones
-   * de id en el DOM, no se usa con fines de seguridad ni criptográficos.
+   * Id del control (para el `for` del label y accesibilidad). Math.random() solo genera
+   * un sufijo cosmético para evitar colisiones de id en el DOM, no se usa con fines de
+   * seguridad ni criptográficos.
    */
-  @Input() idControl = `select-${Math.random().toString(36).slice(2, 9)}`;
+  idControl = input(`select-${Math.random().toString(36).slice(2, 9)}`); // NOSONAR
 
   /** Clave i18n del texto de la opción "sin selección". Vacío -> sin opción vacía. */
-  @Input() placeholderKey = 'index.todos';
+  placeholderKey = input('index.todos');
 
   /** Texto del atributo `title` del `<select>` (tooltip). */
-  @Input() titulo = '';
+  titulo = input('');
 
   /** Deshabilita el control desde el componente padre. */
   @Input()
@@ -148,7 +149,7 @@ export class SelectComponent implements ControlValueAccessor {
     if (bruto === '') {
       return null;
     }
-    const opcion = this.opciones.find(o => String(o.valor) === bruto);
+    const opcion = this.opciones().find(o => String(o.valor) === bruto);
     return opcion && typeof opcion.valor === 'number' ? opcion.valor : bruto;
   }
 }

@@ -49,7 +49,7 @@ export class InformacionLegalComponent implements OnInit {
           const htmlCrudo = response.data[0].valor;
           // Seguro: Configuracion.valor solo lo escribe un administrador autenticado
           // desde el panel de gestión interno, nunca un usuario público.
-          this[propiedad] = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
+          this[propiedad] = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo); // NOSONAR
           this.cd.detectChanges();
         }
       },

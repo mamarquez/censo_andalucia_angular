@@ -1,11 +1,10 @@
 import {
   AfterViewInit,
   Component,
+  effect,
   ElementRef,
-  Input,
-  OnChanges,
+  input,
   OnDestroy,
-  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import * as L from 'leaflet';
@@ -40,32 +39,32 @@ type Coordenada = number | string | null | undefined;
     .mapa-contenedor { width: 100%; height: 100%; min-height: inherit; }
   `]
 })
-export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
+export class MapaComponent implements AfterViewInit, OnDestroy {
 
   /** Latitud en grados decimales. */
-  @Input() lat: Coordenada;
+  lat = input<Coordenada>();
 
   /** Longitud en grados decimales. */
-  @Input() lng: Coordenada;
+  lng = input<Coordenada>();
 
   /** Texto del popup del marcador. */
-  @Input() titulo = '';
+  titulo = input('');
 
   /** Nivel de zoom inicial (0 = mundo, 19 = máximo detalle en OSM). */
-  @Input() zoom = 17;
+  zoom = input(17);
 
   /** Permitir zoom con la rueda del ratón. */
-  @Input() scrollWheelZoom = true;
+  scrollWheelZoom = input(true);
 
   /** Si es `false`, deshabilita por completo el zoom interactivo (rueda, doble-click, teclado, pellizco y los botones +/-). */
-  @Input() zoomInteractivo = true;
+  zoomInteractivo = input(true);
 
   /**
    * Puntos `[lat, lng]` del trazado de una ruta. Si se informa (con 2 o más puntos),
    * se dibuja como polilínea y el mapa se encuadra a su extensión, ignorando `lat`/`lng`
    * como centro.
    */
-  @Input() puntos: Array<[number, number]> | null | undefined;
+  puntos = input<Array<[number, number]> | null | undefined>();
 
   @ViewChild('mapa', { static: true }) private readonly contenedor!: ElementRef<HTMLElement>;
 
@@ -74,15 +73,21 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
   private polilinea?: L.Polyline;
   private iniciado = false;
 
+  constructor() {
+    effect(() => {
+      this.lat();
+      this.lng();
+      this.puntos();
+
+      if (this.iniciado) {
+        this.render();
+      }
+    });
+  }
+
   ngAfterViewInit(): void {
     this.iniciado = true;
     this.render();
-  }
-
-  ngOnChanges(cambios: SimpleChanges): void {
-    if (this.iniciado && (cambios['lat'] || cambios['lng'] || cambios['puntos'])) {
-      this.render();
-    }
   }
 
   ngOnDestroy(): void {
@@ -90,8 +95,10 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private render(): void {
-    if (this.puntos && this.puntos.length >= 2) {
-      this.renderRuta(this.puntos);
+    const puntos = this.puntos();
+
+    if (puntos && puntos.length >= 2) {
+      this.renderRuta(puntos);
       return;
     }
 
@@ -99,8 +106,8 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   private renderPunto(): void {
-    const lat = this.aNumero(this.lat);
-    const lng = this.aNumero(this.lng);
+    const lat = this.aNumero(this.lat());
+    const lng = this.aNumero(this.lng());
 
     if (lat === null || lng === null) {
       this.mapa?.remove();
@@ -109,7 +116,7 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     this.asegurarMapa([lat, lng]);
-    this.mapa!.setView([lat, lng], this.zoom);
+    this.mapa!.setView([lat, lng], this.zoom());
 
     this.polilinea?.remove();
     this.polilinea = undefined;
@@ -130,8 +137,8 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
       this.marcador = L.marker([lat, lng], { icon: icono }).addTo(this.mapa!);
     }
 
-    if (this.titulo) {
-      this.marcador.bindPopup(this.titulo);
+    if (this.titulo()) {
+      this.marcador.bindPopup(this.titulo());
     }
 
     this.invalidarTamano();
@@ -149,8 +156,8 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
       this.polilinea = L.polyline(puntos, { color: '#1a7a3c', weight: 4 }).addTo(this.mapa!);
     }
 
-    if (this.titulo) {
-      this.polilinea.bindPopup(this.titulo);
+    if (this.titulo()) {
+      this.polilinea.bindPopup(this.titulo());
     }
 
     this.mapa!.fitBounds(this.polilinea.getBounds(), { padding: [20, 20] });
@@ -165,13 +172,13 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
 
     this.mapa = L.map(this.contenedor.nativeElement, {
       center: centroInicial,
-      zoom: this.zoom,
-      scrollWheelZoom: this.scrollWheelZoom,
-      zoomControl: this.zoomInteractivo,
-      doubleClickZoom: this.zoomInteractivo,
-      boxZoom: this.zoomInteractivo,
-      touchZoom: this.zoomInteractivo,
-      keyboard: this.zoomInteractivo
+      zoom: this.zoom(),
+      scrollWheelZoom: this.scrollWheelZoom(),
+      zoomControl: this.zoomInteractivo(),
+      doubleClickZoom: this.zoomInteractivo(),
+      boxZoom: this.zoomInteractivo(),
+      touchZoom: this.zoomInteractivo(),
+      keyboard: this.zoomInteractivo()
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

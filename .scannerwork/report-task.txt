@@ -2,5 +2,5 @@ projectKey=censo_censo_angular
 serverUrl=http://192.168.1.143:9090
 serverVersion=26.9.0.129388
 dashboardUrl=http://192.168.1.143:9090/dashboard?id=censo_censo_angular
-ceTaskId=57b41639-a749-4cf4-a4eb-e83ff191400c
-ceTaskUrl=http://192.168.1.143:9090/api/ce/task?id=57b41639-a749-4cf4-a4eb-e83ff191400c
+ceTaskId=29280bad-65af-4d8d-bb22-e185fcfd437e
+ceTaskUrl=http://192.168.1.143:9090/api/ce/task?id=29280bad-65af-4d8d-bb22-e185fcfd437e

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
@@ -9,5 +9,5 @@ import {TranslatePipe} from '@ngx-translate/core';
   styleUrl: './loader.component.css',
 })
 export class LoaderComponent {
-  @Input() cargando: boolean = false;
+  cargando = input(false);
 }

@@ -20,14 +20,14 @@ describe('SelectComponent', () => {
 
   function crear() {
     const fixture = TestBed.createComponent(SelectComponent);
-    fixture.componentInstance.opciones = opciones;
+    fixture.componentRef.setInput('opciones', opciones);
     fixture.detectChanges();
     return fixture;
   }
 
   it('genera un idControl por defecto no vacío', () => {
     const fixture = crear();
-    expect(fixture.componentInstance.idControl).toMatch(/^select-/);
+    expect(fixture.componentInstance.idControl()).toMatch(/^select-/);
   });
 
   it('writeValue normaliza null/undefined a string vacío', () => {

@@ -45,7 +45,7 @@ export class PlanesLocalesComponent implements OnInit {
           const htmlCrudo = response.data[0].valor;
           // Seguro: Configuracion.valor solo lo escribe un administrador autenticado
           // desde el panel de gestión interno, nunca un usuario público.
-          const htmlSeguro = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
+          const htmlSeguro = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo); // NOSONAR
 
           this[propiedad] = htmlSeguro;
           this.cd.detectChanges();

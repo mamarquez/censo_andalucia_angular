@@ -16,14 +16,14 @@ describe('LoaderComponent', () => {
     const fixture = TestBed.createComponent(LoaderComponent);
     fixture.detectChanges();
 
-    expect(fixture.componentInstance.cargando).toBe(false);
+    expect(fixture.componentInstance.cargando()).toBe(false);
   });
 
-  it('acepta cargando=true por @Input', () => {
+  it('acepta cargando=true por input', () => {
     const fixture = TestBed.createComponent(LoaderComponent);
-    fixture.componentInstance.cargando = true;
+    fixture.componentRef.setInput('cargando', true);
     fixture.detectChanges();
 
-    expect(fixture.componentInstance.cargando).toBe(true);
+    expect(fixture.componentInstance.cargando()).toBe(true);
   });
 });
