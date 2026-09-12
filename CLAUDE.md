@@ -42,6 +42,15 @@ ng generate component views/<name>   # or layout/<name> for chrome components
 
 **Third-party UI**: PrimeNG (Aura theme, Spanish `emptyMessage` override), Bootstrap 5, Font Awesome, and Swiper (initialized via `register()` from `swiper/element/bundle` in components that use carousels, requiring `CUSTOM_ELEMENTS_SCHEMA` on those `@Component` decorators).
 
+## Assistant interaction
+
+- Respond in Spanish by default.
+- Use caveman mode (terse, compressed replies) by default.
+- MemPalace: local memory tool for this repo, wing `censo_andalucia_angular` (CLI installed at `~/.local/bin/mempalace`, no MCP server wired in `.mcp.json` — use CLI via Bash, not `mempalace_*` tools). Config: `mempalace.yaml` (per-project rooms), `entities.json` (both gitignored).
+  - Before answering about past decisions/work in this repo: `mempalace search "<query>" --wing censo_andalucia_angular`.
+  - At session start: check daemon (`mempalace daemon status`); if not running, start it (`mempalace daemon start`). Then `mempalace wake-up --wing censo_andalucia_angular` for compressed context.
+  - Quote search results verbatim, don't paraphrase. If empty, say so — don't guess.
+
 ## Conventions
 
 - Single quotes, 2-space indent, ~100 col width (see [.prettierrc](.prettierrc)); Angular parser for `.html` templates.

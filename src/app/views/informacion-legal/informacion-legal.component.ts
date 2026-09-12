@@ -48,6 +48,8 @@ export class InformacionLegalComponent implements OnInit {
       next: (response: ApiResponse<Configuracion[]>) => {
         if (response.data && response.data.length > 0) {
           const htmlCrudo = response.data[0].valor;
+          // Seguro: Configuracion.valor solo lo escribe un administrador autenticado
+          // desde el panel de gestión interno, nunca un usuario público.
           this[propiedad] = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
           this.cd.detectChanges();
         }

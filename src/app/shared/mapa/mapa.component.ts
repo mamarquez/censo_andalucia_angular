@@ -64,7 +64,7 @@ export class MapaComponent implements AfterViewInit, OnChanges, OnDestroy {
    */
   @Input() puntos: Array<[number, number]> | null | undefined;
 
-  @ViewChild('mapa', { static: true }) private contenedor!: ElementRef<HTMLElement>;
+  @ViewChild('mapa', { static: true }) private readonly contenedor!: ElementRef<HTMLElement>;
 
   private mapa?: L.Map;
   private marcador?: L.Marker;

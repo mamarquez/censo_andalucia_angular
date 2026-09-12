@@ -63,7 +63,11 @@ export class SelectComponent implements ControlValueAccessor {
   /** Texto de la etiqueta `<label>`. Si es vacío no se renderiza el label. */
   @Input() etiqueta = '';
 
-  /** Id del control (para el `for` del label y accesibilidad). */
+  /**
+   * Id del control (para el `for` del label y accesibilidad).
+   * NOSONAR: Math.random() solo genera un sufijo cosmético para evitar colisiones
+   * de id en el DOM, no se usa con fines de seguridad ni criptográficos.
+   */
   @Input() idControl = `select-${Math.random().toString(36).slice(2, 9)}`;
 
   /** Clave i18n del texto de la opción "sin selección". Vacío -> sin opción vacía. */

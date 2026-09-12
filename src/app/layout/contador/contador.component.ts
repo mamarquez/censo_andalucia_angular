@@ -21,7 +21,7 @@ export class ContadorComponent implements OnInit {
     rutas: 0
   };
 
-  constructor(private censoService: CensoService, private router: Router, private cd: ChangeDetectorRef) {
+  constructor(private readonly censoService: CensoService, private readonly router: Router, private readonly cd: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {

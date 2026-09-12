@@ -14,8 +14,7 @@ import {TranslatePipe} from '@ngx-translate/core';
   standalone: true,
   selector: 'app-acerca',
   imports: [CommonModule, FormsModule, TranslatePipe],
-  templateUrl: './acerca.component.html',
-  styleUrls: ['./acerca.component.css']
+  templateUrl: './acerca.component.html'
 })
 export class AcercaComponent implements OnInit {
 
@@ -26,10 +25,10 @@ export class AcercaComponent implements OnInit {
   };
 
   constructor(
-    private censoService: CensoService,
-    private router: Router,
-    private cd: ChangeDetectorRef,
-    private sanitizer: DomSanitizer
+    private readonly censoService: CensoService,
+    private readonly router: Router,
+    private readonly cd: ChangeDetectorRef,
+    private readonly sanitizer: DomSanitizer
   ) {
     register();
   }
@@ -43,6 +42,8 @@ export class AcercaComponent implements OnInit {
       next: (response: ApiResponse<Configuracion[]>) => {
         if (response.data && response.data.length > 0) {
           const htmlCrudo = response.data[0].valor;
+          // Seguro: Configuracion.valor solo lo escribe un administrador autenticado
+          // desde el panel de gestión interno, nunca un usuario público.
           this.acerca = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
           this.cd.detectChanges();
         }

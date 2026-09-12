@@ -34,40 +34,34 @@ export class CensoService {
   /**
    * Contadores
    */
-  numeroInstalaciones() {
-    return this.http.get<ApiResponse<number>>(`${this.api}/instalaciones/contador`, {
+  private contador(ruta: string) {
+    return this.http.get<ApiResponse<number>>(`${this.api}/${ruta}`, {
       params: buildHttpParams(this.filtros), headers: this.headers
     });
+  }
+
+  numeroInstalaciones() {
+    return this.contador('instalaciones/contador');
   }
 
   numeroEspaciosDeportivos() {
-    return this.http.get<ApiResponse<number>>(`${this.api}/instalaciones/espaciosdeportivos`, {
-      params: buildHttpParams(this.filtros), headers: this.headers
-    });
+    return this.contador('instalaciones/espaciosdeportivos');
   }
 
   numeroEspaciosComplementarios() {
-    return this.http.get<ApiResponse<number>>(`${this.api}/instalaciones/contador`, {
-      params: buildHttpParams(this.filtros), headers: this.headers
-    });
+    return this.contador('instalaciones/contador');
   }
 
   numeroModalidadesDeportivas() {
-    return this.http.get<ApiResponse<number>>(`${this.api}/instalaciones/contador`, {
-      params: buildHttpParams(this.filtros), headers: this.headers
-    });
+    return this.contador('instalaciones/contador');
   }
 
   numeroActividadesDeportivas() {
-    return this.http.get<ApiResponse<number>>(`${this.api}/actividadesdeportivas/contador`, {
-      params: buildHttpParams(this.filtros), headers: this.headers
-    });
+    return this.contador('actividadesdeportivas/contador');
   }
 
   numeroRutas() {
-    return this.http.get<ApiResponse<number>>(`${this.api}/instalaciones/contador`, {
-      params: buildHttpParams(this.filtros), headers: this.headers
-    });
+    return this.contador('instalaciones/contador');
   }
 
 

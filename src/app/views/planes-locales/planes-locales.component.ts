@@ -43,6 +43,8 @@ export class PlanesLocalesComponent implements OnInit {
       next: (response: ApiResponse<Configuracion[]>) => {
         if (response.data && response.data.length > 0) {
           const htmlCrudo = response.data[0].valor;
+          // Seguro: Configuracion.valor solo lo escribe un administrador autenticado
+          // desde el panel de gestión interno, nunca un usuario público.
           const htmlSeguro = this.sanitizer.bypassSecurityTrustHtml(htmlCrudo);
 
           this[propiedad] = htmlSeguro;
